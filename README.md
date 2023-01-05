@@ -1,24 +1,31 @@
-# README
+# <お菓子作りレシピサイト>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+*お菓子に関する自分のレシピを投稿できたり、作りたいお菓子のジャンルを検索して閲覧できるコミュニティサイト
 
-Things you may want to cover:
+### テーマを選んだ理由
+*お菓子作りが趣味でよく利用していて、投稿レシピに「実際に作ってみました」などコミュニケーションが生まれたり、様々なレシピがあるので作りたいレシピがあると便利だと考えました。
 
-* Ruby version
+### ターゲットユーザ
+お菓子を作りたい人
 
-* System dependencies
+### 主な利用シーン
+作りたいお菓子がありレシピを検索するとき、自分のお菓子のレシピを投稿する時
 
-* Configuration
 
-* Database creation
+## 設計書
+出来次第貼ります
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Deployment instructions
-
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
