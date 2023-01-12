@@ -26,7 +26,7 @@
   <%= f.text_area :introduction, class: ""%>
  </div>
  <div class="form-group">
-  <%= image_tag @customer.image, size: '50x50' %>
+  <%= image_tag @customer.get_image, size: '50x50' %>
   <%= f.label :image, "プロフィール画像" ,class: ""  %>
   <%= f.file_field :image, accept:"image/*" %> <!--accept: "image/*"は画像ファイルのみ投稿可能-->
  </div>

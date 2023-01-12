@@ -9,7 +9,7 @@
 
 <%= link_to "編集する", edit_customer_path(@customer), class: "" %>
 
-  <%#= image_tag @customer.image, size: '50x50' %>
+  <%= image_tag @customer.get_image, size: '50x50' %>
   <%= @customer.name %>
   <!--ニックネームもできれば入れたい-->
   <%= @customer.email %>
