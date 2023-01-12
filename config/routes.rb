@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  
+
   root to: "public/homes#top"
-  
+
    # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 # 会員用
@@ -19,7 +19,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 
 
-  namespace :public do
+  scope module: :public do
     get 'homes/top'
     get 'homes/about'
     get 'recipes/search'

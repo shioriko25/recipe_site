@@ -1,11 +1,22 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "publics/shared/error_messages", resource: resource %>
+<%= form_with model: @customer,  url: customer_registration_path do |f| %>
+<%#= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "public/shared/error_messages", resource: resource %>
+  
+  <div class="field">
+    <%= f.label :"お名前" %><br />
+    <%= f.text_field :name, placeholder:"山田太郎" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :"ふりがな" %><br />
+    <%= f.text_field :name_kana, placeholder:"やまだたろう" %>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"example@mail" %>
   </div>
 
   <div class="field">
@@ -26,4 +37,4 @@
   </div>
 <% end %>
 
-<%= render "publics/shared/links" %>
+<%= render "public/shared/links" %>
