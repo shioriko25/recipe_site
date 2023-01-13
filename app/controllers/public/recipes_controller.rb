@@ -1,5 +1,5 @@
 class Public::RecipesController < ApplicationController
-   #before_action :authenticate_customer!
+   #before_action :authenticate_customer only: [:index,:show, :create]
   #before_action :ensure_correct_customer,only: [:update, :destroy]
 
   def index
@@ -13,7 +13,8 @@ class Public::RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    @recipe = Comment.new
+    @comment = Comment.new
+    #@recipes = Recipe.new
     #@ingredients = Ingredient.all
     #@steps = Step.all
   end

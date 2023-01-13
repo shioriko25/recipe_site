@@ -25,9 +25,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get 'recipes/search'
     get 'customers/unsubscribe'
     patch 'customers/withdrawal'
-    resources :comments, only: [:index, :create, :destroy]
     resources :favorites, only: [:index, :create, :destroy]
-    resources :recipes, only: [:index, :new, :show, :edit, :create, :update, :destroy]
+    resources :recipes, only: [:index, :new, :show, :edit, :create, :update, :destroy] do
+    resources :comments, only: [:index, :create, :destroy]
+    end
     resources :customers, only: [:show, :edit, :update]
     resources :sessions, only: [:new, :create, :destroy]
     resources :registrations, only: [:new, :create]

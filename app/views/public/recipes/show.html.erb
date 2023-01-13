@@ -17,7 +17,7 @@
 <div>
   <p>コメント件数：<%= @recipe.comments.count %></p>
   <% @recipe.comments.each do |comment| %>
-    <p><%#= image_tag comment.customer.get_image(100,100) %></p>
+    <p><%= image_tag @recipe.customer.get_image, size: '30x30' %></p>
     <%= comment.customer.name %>
     <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
   <% end %>

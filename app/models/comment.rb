@@ -3,8 +3,10 @@ class Comment < ApplicationRecord
 
    belongs_to :customer
    belongs_to :recipe
-   
-   
+
+   has_one_attached :image
+
+
    def get_image #画像が存在しない場合に表示する画像をActiveStorageに格納する
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
