@@ -1,2 +1,13 @@
-<h1>Public::Recipes#index</h1>
-<p>Find me in app/views/public/recipes/index.html.erb</p>
+
+
+<h3>投稿レシピ一覧</h3>
+
+<% @recipes.each do |recipe| %>
+
+  <%= link_to recipe.name, recipe_path(recipe.id)  %>
+  <%= recipe.size %>
+  <%= recipe.quantity %>
+  <%= recipe.introduction %>
+
+
+<% end %>

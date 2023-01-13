@@ -1,2 +1,46 @@
 <h1>Admin::Customers#edit</h1>
 <p>Find me in app/views/admin/customers/edit.html.erb</p>
+
+
+<h3><%= @customer.name %>さんの会員情報編集</h3>
+
+
+<%= form_with model: @customer, url: admin_customer_path, label: true do |f| %>
+
+<%= @customer.id %>
+
+<div class="form-group">
+  <%= f.label :name, "お名前" ,class: ""  %>
+  <%= f.text_field :name, class: "form-control last_name"%>
+ </div>
+ <div class="form-group">
+  <%= f.label :name_kana, "ふりがな" ,class: ""  %>
+  <%= f.text_field :name_kana, class: ""%>
+ </div>
+ <div class="form-group"></div> <!--できればニックネームも-->
+ <div class="form-group">
+  <%= f.label :email, "メールアドレス" ,class: ""  %>
+  <%= f.text_field :email, class: ""%>
+ </div>
+ <div class="form-group">
+  <%= f.label :introduction, "自己紹介" ,class: ""  %>
+  <%= f.text_area :introduction, class: ""%>
+ </div>
+ <div class="form-group">
+  <%= image_tag @customer.get_image, size: '50x50' %>
+  <%= f.label :image, "プロフィール画像" ,class: ""  %>
+  <%= f.file_field :image, accept:"image/*" %> <!--accept: "image/*"は画像ファイルのみ投稿可能-->
+ </div>
+ 
+ <%= f.radio_button :is_deleted, :false %><%= f.label :customer_status_false, "有効" %>&emsp;
+ <%= f.radio_button :is_deleted, :true %><%= f.label :customer_status_true, "退会" %>
+ 
+ <div class="">
+  <%= f.submit "保存", class: "" %>
+  
+ 
+
+<% end %>
+
+
+

@@ -1,2 +1,18 @@
 <h1>Public::Recipes#show</h1>
 <p>Find me in app/views/public/recipes/show.html.erb</p>
+
+
+<div><%= flash[:notice] %></div>
+
+<h3></h3>
+
+<%= image_tag @recipe.get_image, size: '50x50' %>
+<%= @recipe.name %>
+<%= @recipe.size %>
+<%= @recipe.quantity %>
+<%= @recipe.introduction %>
+
+
+
+<%#= link_to "編集する", edit_admin_customer_path(@customer) %>
+

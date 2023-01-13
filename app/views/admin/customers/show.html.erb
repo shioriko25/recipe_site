@@ -1,2 +1,19 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+
+<div><%= flash[:notice] %></div>
+
+<h3><%= @customer.name %>さんの会員詳細</h3>
+
+<%= image_tag @customer.get_image, size: '50x50' %>
+<%= @customer.id %>
+<%= @customer.name %>
+<%= @customer.name_kana %>
+<%= @customer.email %>
+<%= @customer.introduction %>
+<% if @customer.is_deleted == false %>
+  有効
+<% else %>
+  退会
+<% end %>
+<%= link_to "編集する", edit_admin_customer_path(@customer) %>
+<%#= link_to "投稿レシピを見る", _path(@customer) %>
+
