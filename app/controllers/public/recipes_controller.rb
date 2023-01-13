@@ -13,12 +13,14 @@ class Public::RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    @ingredients = Ingredient.all
-    @steps = Step.all
+    @recipe = Comment.new
+    #@ingredients = Ingredient.all
+    #@steps = Step.all
   end
 
   def edit
     @recipe = Recipe.find(params[:id])
+    @customer = current_customer
     @ingredients = Ingredient.all
     @steps = Step.all
   end
@@ -31,6 +33,17 @@ class Public::RecipesController < ApplicationController
       flash[:notice] = "レシピを投稿しました"
     else
       render :new
+    end
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    @customer = current_customer
+    if @recipe.update(recipe_params)
+      flash[:success] = "保存できました"
+       redirect_to recipe_path(@recipe.id)
+    else
+      render 'edit'
     end
   end
 

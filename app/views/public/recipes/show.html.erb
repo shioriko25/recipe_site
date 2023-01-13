@@ -1,6 +1,3 @@
-<h1>Public::Recipes#show</h1>
-<p>Find me in app/views/public/recipes/show.html.erb</p>
-
 
 <div><%= flash[:notice] %></div>
 
@@ -14,5 +11,23 @@
 
 
 
-<%#= link_to "編集する", edit_admin_customer_path(@customer) %>
+<%= link_to "編集する", edit_recipe_path(@recipe) %>
 
+
+<div>
+  <p>コメント件数：<%= @recipe.comments.count %></p>
+  <% @recipe.comments.each do |comment| %>
+    <p><%#= image_tag comment.customer.get_image(100,100) %></p>
+    <%= comment.customer.name %>
+    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+  <% end %>
+</div>
+<div>
+  <%= form_with model: [@recipe, @comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>
+
+
+<%= link_to " レシピ一覧に戻る", recipes_path(current_customer) %>

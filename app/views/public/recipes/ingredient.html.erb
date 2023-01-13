@@ -1,0 +1,27 @@
+
+
+
+<h3>材料投稿</h3>
+
+<%= form_with model: @ingredient, url:recipes_path, local: true do |f| %>
+
+<%= f.hidden_field :recipe_id, :value => @recipe.id  %>
+<div class="form-group">
+  <%= f.label :name_number, "材料番号" ,class: ""  %>
+  <%= f.text_field :name_number, class: ""%>
+ </div>
+ <div class="form-group">
+  <%= f.label :name, "材料" ,class: ""  %>
+  <%= f.text_field :name, class: ""%>
+ </div>
+ <div class="form-group">
+  <%= f.label :quantity, "数量" ,class: ""  %>
+  <%= f.text_field :quantity, class: ""%>
+ </div>
+ <div class="form-group">
+  <%= f.label :unit, "数量単位" ,class: ""  %>
+  <%= f.text_field :unit, class: ""%>
+ </div>
+ 
+<% end %>
+

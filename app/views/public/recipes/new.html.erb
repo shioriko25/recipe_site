@@ -7,7 +7,7 @@
 <%= f.hidden_field :customer_id, :value => @customer.id  %>
 
 <div class="form-group">
-  
+
   <%= f.label :image, "レシピ画像" ,class: ""  %>
   <%= f.file_field :image, accept:"image/*" %> <!--accept: "image/*"は画像ファイルのみ投稿可能-->
  </div>
@@ -28,8 +28,8 @@
   <%= f.label :introduction, "紹介文" ,class: ""  %>
   <%= f.text_area :introduction, class: ""%>
  </div>
- 
- 
+
+
  <div class="">
   <%= f.submit "保存", class: "" %>
 <% end %>

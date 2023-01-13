@@ -2,6 +2,7 @@
 <% if customer_signed_in? %>
   <%= link_to " マイページ", customer_path(current_customer) %>
   <%= link_to " レシピ投稿", new_recipe_path(current_customer) %>
+  <%= link_to " レシピ一覧", recipes_path(current_customer) %>
   <%= link_to " ログアウト", destroy_customer_session_path, method: :delete %>
 <% elsif admin_signed_in? %>
   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
