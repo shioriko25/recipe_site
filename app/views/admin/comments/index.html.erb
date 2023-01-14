@@ -1,2 +1,12 @@
-<h1>Admin::Comments#index</h1>
-<p>Find me in app/views/admin/comments/index.html.erb</p>
+<div><%= flash[:notice] %></div>
+
+<h3>コメント一覧</h3>
+
+
+<% @comments.each do |comment| %>
+<%= image_tag comment.customer.get_image, size: '30x30' %>
+<%= link_to comment.customer.name,  admin_comment_path(comment.id)  %>
+<%= comment.comment %>
+<%= comment.created_at.strftime('%Y/%m/%d') %>
+<% end %>
+

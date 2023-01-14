@@ -7,7 +7,9 @@
 
 <%#= link_to user_path(user.id) do %><%#= image_tag user.get_profile_image(100,100) %><%# end %>
 
+<% if @customer == current_customer %>
 <%= link_to "編集する", edit_customer_path(@customer), class: "" %>
+<% end %>
 
   <%= image_tag @customer.get_image, size: '50x50' %>
   <%= @customer.name %>

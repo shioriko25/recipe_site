@@ -4,10 +4,9 @@
 
 <% @recipes.each do |recipe| %>
 
+  <%= image_tag recipe.get_image, size: '50x50' %>
+  <%= link_to recipe.customer.name, recipes_path(recipe.customer.id) %>
   <%= link_to recipe.name, recipe_path(recipe.id)  %>
-  <%= recipe.size %>
-  <%= recipe.quantity %>
-  <%= recipe.introduction %>
-
+コメント数：<%= recipe.comments.count %>
 
 <% end %>

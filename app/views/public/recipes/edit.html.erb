@@ -1,6 +1,3 @@
-<h1>Public::Recipes#edit</h1>
-<p>Find me in app/views/public/recipes/edit.html.erb</p>
-
 
 <h3>レシピ編集</h3>
 
@@ -31,6 +28,23 @@
   <%= f.label :introduction, "紹介文" ,class: ""  %>
   <%= f.text_area :introduction, class: ""%>
  </div>
+ 
+ <div class="form-group">
+  <%= f.label :point, "point!" ,class: ""  %>
+  <%= f.text_area :point, class: ""%>
+ </div>
+ 
+ <div class="form-group">
+  <%= f.label :ingredient_name, "材料" ,class: ""  %>
+  <%= f.text_area :ingredient_name, class: ""%>
+ </div>
+ 
+ 
+ <div class="form-group">
+  <%= f.label :process, "作り方" ,class: ""  %>
+  <%= f.text_area :process, class: ""%>
+ </div>
+ 
 
 
 

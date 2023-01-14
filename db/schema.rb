@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_11_122847) do
+ActiveRecord::Schema.define(version: 2023_01_14_083935) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -83,16 +83,6 @@ ActiveRecord::Schema.define(version: 2023_01_11_122847) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "ingredients", force: :cascade do |t|
-    t.integer "recipe_id", null: false
-    t.string "name", null: false
-    t.integer "name_number", null: false
-    t.string "quantity"
-    t.string "unit"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "recipe_tags", force: :cascade do |t|
     t.integer "recipe_id", null: false
     t.integer "tag_id", null: false
@@ -109,14 +99,8 @@ ActiveRecord::Schema.define(version: 2023_01_11_122847) do
     t.text "point"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "steps", force: :cascade do |t|
-    t.integer "recipe_id", null: false
-    t.integer "process_number", null: false
-    t.string "process", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.text "ingredient_name"
+    t.text "process"
   end
 
   create_table "tags", force: :cascade do |t|

@@ -14,9 +14,6 @@ class Public::RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @comment = Comment.new
-    #@recipes = Recipe.new
-    #@ingredients = Ingredient.all
-    #@steps = Step.all
   end
 
   def edit
@@ -44,7 +41,7 @@ class Public::RecipesController < ApplicationController
       flash[:success] = "保存できました"
        redirect_to recipe_path(@recipe.id)
     else
-      render 'edit'
+      render :edit
     end
   end
 
@@ -63,9 +60,9 @@ class Public::RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:customer_id, :name, :size, :quantity, :introduction, :image)
+    params.require(:recipe).permit(:customer_id, :name, :size, :quantity, :introduction, :image, :ingredient_name, :process, :point)
   end
 
-  ##  :point, :ingredient_id, :stap_id, :recipe_tag, :tag_id
+  ##  :recipe_tag, :tag_id
 
 end

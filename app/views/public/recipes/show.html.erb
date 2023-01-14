@@ -2,16 +2,22 @@
 <div><%= flash[:notice] %></div>
 
 <h3></h3>
-
+<%= image_tag @recipe.customer.get_image, size: '30x30' %>
+<%= link_to @recipe.customer.name, recipes_path(@recipe.customer.id) %>
 <%= image_tag @recipe.get_image, size: '50x50' %>
 <%= @recipe.name %>
 <%= @recipe.size %>
 <%= @recipe.quantity %>
 <%= @recipe.introduction %>
+<%= @recipe.point %>
+<%= @recipe.ingredient_name %>
+<%= @recipe.process %>
 
 
-
+<% if @recipe.customer == current_customer %>
+<%= link_to "削除",  recipe_path(@recipe), method: :delete %>
 <%= link_to "編集する", edit_recipe_path(@recipe) %>
+ <% end %>
 
 
 <div>
@@ -20,6 +26,10 @@
     <p><%= image_tag @recipe.customer.get_image, size: '30x30' %></p>
     <%= comment.customer.name %>
     <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+     <% if comment.customer == current_customer %>
+      <%= link_to "削除",  recipe_comment_path(comment.recipe, comment), method: :delete %>
+      <% end %>
+
   <% end %>
 </div>
 <div>
