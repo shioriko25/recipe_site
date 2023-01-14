@@ -39,7 +39,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get 'homes/top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :tags, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :comments, only: [:index, :show,  :destroy]
+    resources :comments, only: [:index, :show, :destroy]
     resources :sessions, only: [:new, :create, :destroy]
   end
 

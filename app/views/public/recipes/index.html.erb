@@ -2,11 +2,6 @@
 
 <h3>投稿レシピ一覧</h3>
 
-<% @recipes.each do |recipe| %>
 
-  <%= image_tag recipe.get_image, size: '50x50' %>
-  <%= link_to recipe.customer.name, recipes_path(recipe.customer.id) %>
-  <%= link_to recipe.name, recipe_path(recipe.id)  %>
-コメント数：<%= recipe.comments.count %>
 
-<% end %>
+<%= render 'public/customers/recipe', customer_recipe: @recipes %>

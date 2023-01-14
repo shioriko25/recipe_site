@@ -1,0 +1,22 @@
+
+
+<div><%= flash[:notice] %></div>
+
+<h3>マイページ</h3>
+
+<% if @customer == current_customer %>
+<%= link_to "編集する", edit_customer_path(@customer), class: "" %>
+<% end %>
+
+  <%= image_tag @customer.get_image, size: '50x50' %>
+  <%= @customer.name %>
+  <!--ニックネームもできれば入れたい-->
+  <%= @customer.email %>
+  <%= @customer.introduction %>
+
+<h3>レシピ一覧</h3>
+<%= render 'recipe', customer_recipe: @customer.recipes %>
+
+<%= link_to " コメント一覧", recipe_comments_path(@customer.comments) %>
+
+

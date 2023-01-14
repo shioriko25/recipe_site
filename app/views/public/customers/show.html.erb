@@ -1,21 +1,13 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
 
-<div><%= flash[:notice] %></div>
+<h3>ログインユーザー以外のページ</h3>
 
-<h3>マイページ</h3>
-
-<%#= link_to user_path(user.id) do %><%#= image_tag user.get_profile_image(100,100) %><%# end %>
-
-<% if @customer == current_customer %>
-<%= link_to "編集する", edit_customer_path(@customer), class: "" %>
-<% end %>
 
   <%= image_tag @customer.get_image, size: '50x50' %>
   <%= @customer.name %>
   <!--ニックネームもできれば入れたい-->
-  <%= @customer.email %>
   <%= @customer.introduction %>
 
 
 
+<h3>レシピ一覧</h3>
+<%= render 'recipe', customer_recipe: @customer.recipes %>

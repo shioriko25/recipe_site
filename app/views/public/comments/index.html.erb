@@ -1,2 +1,22 @@
 <h1>Public::Comments#index</h1>
 <p>Find me in app/views/public/comments/index.html.erb</p>
+
+
+<h3>コメント一覧</h3>
+
+
+
+ <p>コメント件数：<%= @comments.count %></p>
+
+
+ <% @comments.each do |comment| %>
+    <p><%= image_tag comment.customer.get_image, size: '30x30' %></p>
+    <%= comment.customer.name %>
+    <%= comment.comment %>
+     <%= link_to comment.recipe.name, recipe_path(comment.recipe.id) %>
+    <%= comment.created_at.strftime('%Y/%m/%d') %>
+     <% if comment.customer == current_customer %>
+      <%= link_to "削除",  recipe_comment_path(comment.recipe, comment), method: :delete %>
+      <% end %>
+ <% end %>
+  

@@ -4,6 +4,7 @@ class Public::RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
+    #@customer = Customer.find(params[:id])
   end
 
   def new
