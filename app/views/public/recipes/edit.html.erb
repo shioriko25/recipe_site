@@ -45,6 +45,13 @@
   <%= f.text_area :process, class: ""%>
  </div>
  
+ 
+  "スペースを入力することで複数のタグを付けることができます。"
+   "例：音楽 文芸 スポーツ"
+  <div class="form-group">
+   <%= f.label :tag_name, "タグ" ,class: ""  %>
+   <%= f.text_field :tag_name, value: @tags  %>
+  </div>
 
 
 

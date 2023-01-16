@@ -2,6 +2,18 @@
 
 <h3>投稿レシピ一覧</h3>
 
+<h3>タグリスト</h3> 
 
+<% @tag_list.each do |list| %>
 
+  <% if  list.recipes.count > 0 %> <!--タグが０の場合は表示しない-->
+    <span>
+      <%= link_to list.tag_name, tag_recipes_path(tag_id: list.id) %>
+      <%= "(#{list.recipes.count})" %>
+    </span>
+  <%end%>
+  
+<% end %>
+</br>
 <%= render 'public/customers/recipe', customer_recipe: @recipes %>
+

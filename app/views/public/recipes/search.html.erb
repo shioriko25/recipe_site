@@ -1,2 +1,24 @@
-<h1>Public::Recipes#search</h1>
-<p>Find me in app/views/public/recipes/search.html.erb</p>
+
+
+<h3>タグで絞り込んだ投稿一覧</h3>
+
+
+<!--タグリスト-->
+<% @tag_list.each do |list| %>
+<% if  list.recipes.count > 0 %> <!--タグが０の場合は表示しない-->
+<%= link_to list.tag_name, tag_recipes_path(recipe_tag_id: list.id) %>
+<%= "(#{list.recipes.count})" %>
+<% end %>
+<% end %>
+</br>
+
+"タグが ─ "
+<strong><%= "#{@tag.tag_name}" %> </strong>
+" ─ の投稿一覧"
+</br>
+
+
+<!--タグによって絞り込んだ投稿一覧-->
+<% @recipes.each do |recipe| %>
+  <%= link_to recipe.name, recipe_path(recipe.id)  %>
+<% end %>

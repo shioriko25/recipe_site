@@ -4,8 +4,10 @@ class Public::RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
-    #@customer = Customer.find(params[:id])
+    @tag_list = Tag.all
+    @recipe = current_customer.recipes.new #ビューのform_withのmodelに使う
   end
+
 
   def new
     @recipe = Recipe.new
@@ -15,20 +17,25 @@ class Public::RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @comment = Comment.new
+    @recipe_tags = @recipe.tags #そのクリックした投稿に紐付けられているタグの取得
   end
 
   def edit
     @recipe = Recipe.find(params[:id])
     @customer = current_customer
-    @ingredients = Ingredient.all
-    @steps = Step.all
+    @tags = @recipe.tags.pluck(:tag_name).join(", ")
+   
+   
+    #@recipe = 
   end
 
   def create
     @customer = current_customer
     @recipe = Recipe.new(recipe_params)
+    tag_list = params[:recipe][:tag_name].delete("　").delete(" ").split(',')
     if @recipe.save
-      redirect_to recipe_path(@recipe.id)
+       @recipe.save_tag(tag_list)
+       redirect_to recipe_path(@recipe.id)
       flash[:notice] = "レシピを投稿しました"
     else
       render :new
@@ -38,7 +45,9 @@ class Public::RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     @customer = current_customer
+    tag_list = params[:recipe][:tag_name].delete("　").delete(" ").split(',')
     if @recipe.update(recipe_params)
+       @recipe.save_tag(tag_list)
       flash[:success] = "保存できました"
        redirect_to recipe_path(@recipe.id)
     else
@@ -54,7 +63,12 @@ class Public::RecipesController < ApplicationController
     redirect_to recipes_path
   end
 
+  # redirect_back(fallback_location: root_path)
+
   def search
+    @tag_list = Tag.all  #投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
+    @tag = Tag.find(params[:tag_id]) #クリックしたタグを取得
+    @recipes = @tag.recipes.all #クリックしたタグに紐付けられた投稿を全て表示
   end
 
 

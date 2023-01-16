@@ -1,0 +1,16 @@
+
+
+<h3>タグ投稿</h3>
+
+ <%= form_with model: recipe , url:recipes_path, local: true do |f| %>
+ <%#= f.hidden_field :recipe_tag_id, :value => @recipe_tag.id  %>
+ <%#= f.hidden_field :tag_id, :value => @tag.id  %>
+   "スペースを入力することで複数のタグを付けることができます。"
+   "例：音楽 文芸 スポーツ"
+   <div class="form-group">
+     <%= f.text_field :name %>
+   </div>
+ <% end %>
+
+
+

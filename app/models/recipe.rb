@@ -4,10 +4,8 @@ class Recipe < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :recipe_tags, dependent: :destroy
-  has_many :ingredients, dependent: :destroy
-  has_many :steps, dependent: :destroy
   has_one_attached :image
-  has_many :tags,through: :recipe_tags #throughオプションは「〜を経由する」
+  has_many :tags, through: :recipe_tags, dependent: :destroy  #throughオプションは「〜を経由する」
 
 
 def get_image #画像が存在しない場合に表示する画像をActiveStorageに格納する
@@ -17,6 +15,22 @@ def get_image #画像が存在しない場合に表示する画像をActiveStora
     end
     image
 end
+
+def save_tag(sent_tags) #createアクションで記述したsave_tagインスタンスメソッドの中身を定義
+    current_tags = self.tags.pluck(:tag_name) unless self.tags.nil? #タグの名前を配列pluck(:tag_name)として全て取得します。
+    old_tags = current_tags  #存在するタグから、送信されてきたタグを除いたタグをold_tagsとします
+    new_tags = sent_tags  #送信されてきたタグから、現在存在するタグを除いたタグをnew_tagsとする
+
+    old_tags.each do |old| #古いタグを削除します。
+      self.recipe_tags.destroy_all
+    end
+    new_tags.each do |new| #新しいタグの保存
+      tag = Tag.find_or_create_by!(tag_name: new)
+      new_recipe_tag = self.recipe_tags.new(tag_id: tag.id)
+      self.recipe_tags << new_recipe_tag
+    end
+end
+
 
 
 end

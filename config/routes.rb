@@ -22,9 +22,11 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   scope module: :public do
     get 'homes/top'
     get 'homes/about'
-    get 'recipes/search'
     get 'customers/unsubscribe'
     patch 'customers/withdrawal'
+    resources :tags do
+    get 'recipes', to: 'recipes#search'
+   end
     resources :favorites, only: [:index, :create, :destroy]
     resources :recipes, only: [:index, :new, :show, :edit, :create, :update, :destroy] do
     resources :comments, only: [:index, :create, :destroy]
