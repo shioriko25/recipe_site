@@ -5,10 +5,10 @@
 
 <!--タグリスト-->
 <% @tag_list.each do |list| %>
-<% if  list.recipes.count > 0 %> <!--タグが０の場合は表示しない-->
-<%= link_to list.tag_name, tag_recipes_path(recipe_tag_id: list.id) %>
-<%= "(#{list.recipes.count})" %>
-<% end %>
+  <% if  list.recipes.count > 0 %> <!--タグが０の場合は表示しない-->
+    <%= link_to list.tag_name, tag_recipes_path(recipe_tag_id: list.id) %>
+    <%= "(#{list.recipes.count})" %>
+  <% end %>
 <% end %>
 </br>
 
@@ -20,5 +20,6 @@
 
 <!--タグによって絞り込んだ投稿一覧-->
 <% @recipes.each do |recipe| %>
+  <%= image_tag recipe.get_image, size: '50x50' %>
   <%= link_to recipe.name, recipe_path(recipe.id)  %>
 <% end %>
