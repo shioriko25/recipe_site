@@ -31,6 +31,17 @@ def save_tag(sent_tags) #createアクションで記述したsave_tagインス�
     end
 end
 
+def self.looks(searches, words)
+  if searches == "perfect_match"
+    @recipe = Recipe.where("name LIKE ?", "#{words}")
+  else
+    @recipe = Recipe.where("name LIKE ?", "%#{words}%")
+  end
+end
 
+
+def favorited_by?(customer) #ユーザidがFavoritesテーブル内に存在（exists?）するかどうかを調べます。
+    favorites.exists?(customer_id: customer.id)
+end
 
 end

@@ -19,5 +19,14 @@ class Customer < ApplicationRecord
     image
   end
 
+
+def self.looks(searches, words)
+  if searches == "perfect_match"
+    @customer = Customer.where("name LIKE ?", "#{words}")
+  else
+    @customer = Customer.where("name LIKE ?", "%#{words}%")
+  end
+end
+
     
 end

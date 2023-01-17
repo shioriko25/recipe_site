@@ -18,15 +18,16 @@ class Public::RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @comment = Comment.new
     @recipe_tags = @recipe.tags #そのクリックした投稿に紐付けられているタグの取得
+    #@customer = Customer.find(params[:id])
   end
 
   def edit
     @recipe = Recipe.find(params[:id])
     @customer = current_customer
     @tags = @recipe.tags.pluck(:tag_name).join(", ")
-   
-   
-    #@recipe = 
+
+
+    #@recipe =
   end
 
   def create
@@ -69,6 +70,14 @@ class Public::RecipesController < ApplicationController
     @tag_list = Tag.all  #投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
     @tag = Tag.find(params[:tag_id]) #クリックしたタグを取得
     @recipes = @tag.recipes.all #クリックしたタグに紐付けられた投稿を全て表示
+  end
+
+
+
+  def finder
+    @range = params[:range]
+    @recipes = Recipe.looks(params[:search],params[:word])
+    @customers = Customer.looks(params[:search], params[:word])
   end
 
 

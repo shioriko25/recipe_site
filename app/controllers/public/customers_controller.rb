@@ -4,7 +4,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    
+
     if @customer.id == current_customer.id
       render "mypage"
     else

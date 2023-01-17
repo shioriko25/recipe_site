@@ -27,9 +27,11 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :tags do
     get 'recipes', to: 'recipes#search'
    end
-    resources :favorites, only: [:index, :create, :destroy]
+   get 'finder' => "recipes#finder"
     resources :recipes, only: [:index, :new, :show, :edit, :create, :update, :destroy] do
     resources :comments, only: [:index, :create, :destroy]
+    resources :favorites, only: [:index] 
+    resource :favorites, only: [:create, :destroy] #URLに/:idを含めない形にしています
     end
     resources :customers, only: [:show, :edit, :update]
     resources :sessions, only: [:new, :create, :destroy]

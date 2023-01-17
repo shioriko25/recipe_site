@@ -10,6 +10,20 @@
   <%=  link_to tag.tag_name, tag_recipes_path(tag_id: tag.id) %>
   <%= "(#{tag.recipes.count})" %>
 <% end %>
+
+ <% if @recipe.favorited_by?(current_customer) %>
+    <p>
+      <%= link_to recipe_favorites_path(@recipe), method: :delete do %>
+        ♥<%= @recipe.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to recipe_favorites_path(@recipe), method: :post do %>
+        ♡<%= @recipe.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
   <%= @recipe.size %>
   <%= @recipe.quantity %>
   <%= @recipe.introduction %>

@@ -1,0 +1,23 @@
+
+<!--検索フォーム-->
+
+<%= render 'keyword' %>
+
+<!--キーワード検索によって絞り込んだ投稿一覧-->
+
+
+<strong>"<%= "#{@range = params[:word]}" %> "</strong>
+の検索結果
+</br>
+
+
+    <% @customers.each do |customer| %>
+    <%= image_tag customer.get_image, size: '50x50' %>
+    <%= link_to customer.name, customer_path(customer.id) %>
+    <% end %>
+
+    <% @recipes.each do |recipe| %>
+      <%= image_tag recipe.get_image, size: '50x50' %>
+      <%= link_to recipe.name, recipe_path(recipe.id) %>
+   <% end %>
+
