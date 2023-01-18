@@ -1,2 +1,12 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+
+
+
+<h3>新着レシピ</h3>
+
+<%= render 'recipe_top', recipes: @recipes %>
+
+
+<h3>♡お気に入りランキング</h3>
+
+<%= render 'recipe_top', recipes: @recipe_rank %>
+

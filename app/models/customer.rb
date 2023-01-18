@@ -7,6 +7,7 @@ class Customer < ApplicationRecord
     has_many :favorites, dependent: :destroy
     has_many :comments, dependent: :destroy
     has_many :recipes, dependent: :destroy
+    has_many :favorited_recipes, through: :favorites, source: :recipe#いいねランキング
     
     has_one_attached :image
     

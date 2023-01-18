@@ -4,8 +4,15 @@ class Public::RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
+    @recipes = Recipe.all.order(created_at: :desc)
     @tag_list = Tag.all
-    @recipe = current_customer.recipes.new #ビューのform_withのmodelに使う
+    #@recipe = current_customer.recipes.new #ビューのform_withのmodelに使う
+  end
+
+  def rank
+     @recipes = Recipe.all
+     @recipe_rank = Recipe.includes(:favorited_customers).sort {|a,b| b.favorited_customers.size <=> a.favorited_customers.size}
+    @tag_list = Tag.all
   end
 
 
@@ -25,9 +32,6 @@ class Public::RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @customer = current_customer
     @tags = @recipe.tags.pluck(:tag_name).join(", ")
-
-
-    #@recipe =
   end
 
   def create

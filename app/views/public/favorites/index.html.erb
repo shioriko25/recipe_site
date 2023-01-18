@@ -1,5 +1,5 @@
-
-<% @favorite_list.each do |recipe|%>
+<h3>お気に入り一覧</h3>
+<% @favorite_recipes.each do |recipe|%>
 <%= image_tag recipe.get_image, size: '50x50' %>
 <%= link_to recipe.name, recipe_path(recipe.id) %>
 

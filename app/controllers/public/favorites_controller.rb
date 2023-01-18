@@ -1,10 +1,9 @@
 class Public::FavoritesController < ApplicationController
 
+
   def index
-    #@customer = Customer.find(params[:id])
-    #@recipes = @customer.posts
     favorites = Favorite.where(customer_id: current_customer.id).pluck(:recipe_id)  # ログイン中のユーザーのお気に入りのpost_idカラムを取得
-    @favorite_list = Recipe.find(favorites)     # postsテーブルから、お気に入り登録済みのレコードを取得
+    @favorite_recipes = Recipe.find(favorites)     # postsテーブルから、お気に入り登録済みのレコードを取得
   end
 
   def create
@@ -20,4 +19,7 @@ class Public::FavoritesController < ApplicationController
     favorite.destroy
     redirect_to recipe_path(recipe)
   end
+
+
+
 end
