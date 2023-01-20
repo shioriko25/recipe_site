@@ -66,9 +66,10 @@ class Public::RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
     redirect_to recipes_path
+    #redirect_back(fallback_location: root_path)
   end
 
-  # redirect_back(fallback_location: root_path)
+  
 
   def search
     @tag_list = Tag.all  #投稿一覧表示ページでも全てのタグを表示するために、タグを全取得

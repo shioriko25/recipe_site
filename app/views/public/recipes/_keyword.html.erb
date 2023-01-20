@@ -1,11 +1,9 @@
 
 <!--検索フォーム-->
 
-    <!--<form class="form-inline my-2 my-lg-0">-->
       <%= form_with url: finder_path, method: :get, class: 'form-inline my-2 my-lg-0', local: :true do |f| %>
             <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]), class:"" %>
             <%= f.text_field :word , class:"form-control mr-sm-2", 'area-label': "Search", type: "Search", placeholder:"キーワード" %>
-            <%= f.submit "検索", class:"btn btn-sm btn-outline-secondary" %>
+            <%= f.submit "検索", class:"btn btn-sm btn-outline-dark" %>
       <% end %>
-     <!--</form>-->
-     <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+     
