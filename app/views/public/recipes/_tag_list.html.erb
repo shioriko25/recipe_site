@@ -1,13 +1,13 @@
-<h3>タグリスト</h3>
 
-
-<% @tag_list.each do |list| %>
+<div class="my-3">
+<% tag_list.each do |list| %>
 
   <% if  list.recipes.count > 0 %> <!--タグが０の場合は表示しない-->
-    <span>
-      <%= link_to list.tag_name, tag_recipes_path(tag_id: list.id) %>
+    <span class="text-secondary bg-warning ml-1">
+      <%= link_to list.tag_name, tag_recipes_path(tag_id: list.id),class:"text-secondary" %>
       <%= "(#{list.recipes.count})" %>
     </span>
   <%end%>
 
 <% end %>
+</div>

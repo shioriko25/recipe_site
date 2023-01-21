@@ -1,14 +1,9 @@
 
-<!--検索フォーム-->
-
-<%#= render 'keyword' %>
 
 <!--キーワード検索によって絞り込んだ投稿一覧-->
-
-
-<strong>"<%= "#{@range = params[:word]}" %> "</strong>
-の検索結果
-</br>
+<div class="row h4 pb-2 mb-4 text-secondary border-bottom border-warning" >
+<h4>"<strong><%= "#{@range = params[:word]}" %> </strong>"のレシピ一覧</h4>
+</div>
 
 
     <% @customers.each do |customer| %>
@@ -16,8 +11,5 @@
     <%= link_to customer.name, customer_path(customer.id) %>
     <% end %>
 
-    <% @recipes.each do |recipe| %>
-      <%= image_tag recipe.get_image, size: '50x50' %>
-      <%= link_to recipe.name, recipe_path(recipe.id) %>
-   <% end %>
-
+<%= render 'public/customers/recipe', customer_recipe: @recipes %>
+    

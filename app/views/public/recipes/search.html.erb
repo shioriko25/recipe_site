@@ -1,26 +1,14 @@
+<div class="row h4 pb-2 mb-4 text-secondary border-bottom border-warning" >
+  
+<h6>"<strong><%= "#{@tag.tag_name}" %> </strong>"のレシピ一覧</h6>
+</div>
 
-<h3>タグで絞り込んだ投稿一覧</h3>
 
 
 <!--タグリスト-->
-<% @tag_list.each do |list| %>
-  <% if  list.recipes.count > 0 %> <!--タグが０の場合は表示しない-->
-    <%= link_to list.tag_name, tag_recipes_path(recipe_tag_id: list.id) %>
-    <%= "(#{list.recipes.count})" %>
-  <% end %>
-<% end %>
-</br>
+<%= render 'tag_list', tag_list: @tag_list %>
 
-"タグが ─ "
-<strong><%= "#{@tag.tag_name}" %> </strong>
-" ─ の投稿一覧"
-</br>
 
 
 <!--タグによって絞り込んだ投稿一覧-->
-<% @recipes.each do |recipe| %>
-  <%= image_tag recipe.get_image, size: '50x50' %>
-  <%= link_to recipe.name, recipe_path(recipe.id)  %>
-<% end %>
-
-
+<%= render 'public/customers/recipe', customer_recipe: @recipes %>
