@@ -1,6 +1,6 @@
 class Public::RecipesController < ApplicationController
-   #before_action :authenticate_customer only: [:index,:show, :create]
-  #before_action :ensure_correct_customer,only: [:update, :destroy]
+ #before_action :authenticate_customer only: [:index,:show, :create]
+ #before_action :ensure_correct_customer,only: [:update, :destroy]
 
   def index
     @recipes = Recipe.all
@@ -91,7 +91,5 @@ class Public::RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:customer_id, :name, :size, :quantity, :introduction, :image, :ingredient_name, :process, :point)
   end
-
-  ##  :recipe_tag, :tag_id
-
 end
+

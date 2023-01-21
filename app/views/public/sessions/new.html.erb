@@ -1,26 +1,36 @@
-<h2>Log in</h2>
 
-<%= form_with model: @customer, url: customer_session_path do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <div class="h4 pb-2 mb-4 text-secondary border-bottom border-warning">
+        <h2>ログイン</h2>
+      </div>
+        <%= form_with model: @customer, url: customer_session_path do |f| %>
+          <div class="mt-5 mb-3  row justify-content-center">
+            <%= f.label :"メールアドレス" ,class:"col-sm-4  form-label" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",class:" col-sm-7 form-control " %>
+          </div>
+        
+          <div class="row mb-3 justify-content-center">
+            <%= f.label :"パスワード" ,class:"col-sm-4  form-label" %>
+            <%= f.password_field :password, autocomplete: "current-password",class:" col-sm-7 form-control " %>
+          </div>
+        
+            <% if devise_mapping.rememberable? %>
+              <div class="row mb-3 ml-3 custom-control custom-checkbox">
+                <%= f.check_box :remember_me ,class:" col-sm-3 custom-control-input" %>
+                <%= f.label :remember_me ,class:"col-sm-7 custom-control-label" %>
+              </div>
+            <% end %>
+        
+              <div class="actions  d-grid col-9 mt-5 mx-auto">
+                <%= f.submit "ログイン",class:"btn btn-warning btn-block" %>
+              </div>
+        <% end %>
+           <div class="actions d-grid col-9 mt-4 mx-auto">
+            <%= render "public/shared/links" %>
+          </div>
+    
+ 
+    <div class="col-lg-5 col-md-12 mt-5  mx-auto ">
+      <%= link_to "管理者はこちらから", admin_session_path, class:"text-secondary " %>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+ 

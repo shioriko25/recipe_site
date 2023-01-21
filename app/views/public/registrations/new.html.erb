@@ -1,45 +1,46 @@
-<div class="container">
 
-
-  <h2>Sign up</h2>
-  <div class="col-lg-7 col-md-12 mx-auto ">
+<div class="h4 pb-2 mb-4 text-secondary border-bottom border-warning ">
+  <h2>会員登録</h2>
+</div>
   <%= form_with model: @customer,  url: customer_registration_path do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
 
-    <div class=" mt-5 mb-3 row">
-      <%= f.label :"お名前",class:"col-sm-3  form-label" %>
-      <%= f.text_field :name, placeholder:"山田太郎",class:" col-sm-7 form-control" %>
+    <div class=" mt-5 mb-3  row justify-content-center">
+      <%= f.label :"お名前",class:"col-sm-4  form-label" %>
+      <%= f.text_field :name, placeholder:"山田太郎",class:" col-sm-7 form-control " %>
     </div>
 
-    <div class="row mb-3">
-      <%= f.label :"ふりがな",class:" col-sm-3 form-label" %>
+    <div class="row mb-3 justify-content-center">
+      <%= f.label :"ふりがな",class:" col-sm-4 form-label" %>
       <%= f.text_field :name_kana, placeholder:"やまだたろう",class:"col-sm-7 form-control" %>
     </div>
 
-    <div class="row mb-3">
-      <%= f.label :email ,class:"col-sm-3 col-form-label"%>
+    <div class="row mb-3 justify-content-center">
+      <%= f.label :"メールアドレス" ,class:"col-sm-4 col-form-label"%>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"example@mail",class:"col-sm-7 form-control" %>
     </div>
 
-    <div class="row mb-3">
-      <%= f.label :password,class:"col-sm-3 col-form-label" %>
+    <div class="row mb-3 justify-content-center">
+      <%= f.label :"パスワード",class:"col-sm-4 col-form-label" %>
       <%= f.password_field :password, autocomplete: "new-password",class:"col-sm-7 form-control" %>
       <% if @minimum_password_length %>
       <em>(半角英数 <%= @minimum_password_length %> 文字）</em>
       <% end %>
     </div>
 
-    <div class="row mb-3">
-      <%= f.label :password_confirmation,class:"col-sm-3 col-form-label" %>
+    <div class="row mb-3 justify-content-center">
+      <%= f.label :"確認用パスワード",class:"col-sm-4 col-form-label" %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"col-sm-7 form-control" %>
     </div>
 
-    <div class="actions">
-      <%= f.submit "Sign up",class:"" %>
-    </div>
-    </div>
-  <% end %>
-  </div>
+    <div class="actions d-grid col-9 mt-5 mx-auto">
+      <%= f.submit "会員登録",class:"btn btn-warning btn-block" %>
+   </div>
 
-  <%= render "public/shared/links" %>
+  <% end %>
+
+    <div class="actions d-grid col-9 mt-4 mx-auto">
+     <%= render "public/shared/links" %>
+    </div>
 </div>
+ 

@@ -35,8 +35,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resource :favorites, only: [:create, :destroy] #URLに/:idを含めない形にしています
     end
     resources :customers, only: [:show, :edit, :update]
-    resources :sessions, only: [:new, :create, :destroy]
-    resources :registrations, only: [:new, :create]
+    # resources :sessions, only: [:new, :create, :destroy]
+    # resources :registrations, only: [:new, :create]
   end
 
 
@@ -45,7 +45,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :customers, only: [:index, :show, :edit, :update]
     resources :tags, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :comments, only: [:index, :show, :destroy]
-    resources :sessions, only: [:new, :create, :destroy]
+   # resources :sessions, only: [:new, :create, :destroy]
   end
 
 end

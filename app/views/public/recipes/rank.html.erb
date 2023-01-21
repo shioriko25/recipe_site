@@ -1,25 +1,19 @@
 
-<%#= render 'keyword' %>
+<div class=" row justify-content-center">
+  <%= link_to "　　　　　新 着 順　　　　　　", recipes_path, class:"btn btn-outline-warning mt-1 mx-1 btn-sm" %>
+  <%= link_to "　　　　お気に入り順　　　　", rank_path, class:"btn btn-warning mt-1 mx-1 btn-sm" %>
+</div>
+
+<div class="h4 pb-2 mb-4 text-secondary border-bottom border-warning">
+        <h2></h2>
+</div>
 
 
-<h3>いいねランキング順</h3>
 
-<h3>タグリスト</h3>
-
-<% @tag_list.each do |list| %>
-
-  <% if  list.recipes.count > 0 %> <!--タグが０の場合は表示しない-->
-    <span>
-      <%= link_to list.tag_name, tag_recipes_path(tag_id: list.id) %>
-      <%= "(#{list.recipes.count})" %>
-    </span>
-  <%end%>
-
-<% end %>
-</br>
 <%= render 'public/customers/recipe', customer_recipe: @recipe_rank %>
 
 <%= link_to "いいねした投稿", recipe_favorites_path(@recipes) %>
 
 
-
+<!--タグリスト-->
+<%= render 'tag_list', tag_list: @tag_list %>
