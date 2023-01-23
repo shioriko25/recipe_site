@@ -1,12 +1,23 @@
 
 
+<div class="row mt-5 h4 pb-2 mb-4 text-secondary border-bottom border-warning justify-content-between" >
+<h4 class="col-sm-4">新着レシピ</h4>
+<%= link_to " 新 着 順 はこちら", recipes_path, class:"col-sm-3 btn btn-outline-warning mt-1 mx-1 btn-sm" %>
+<div class="col-sm-4"></div>
+</div>
 
-<h3>新着レシピ</h3>
+
 
 <%= render 'recipe_top', recipes: @recipes %>
 
+<div class="row h4 mt-5 pb-2 mb-4 text-secondary border-bottom border-warning justify-content-between" >
+<h4 class="col-sm-4">お気に入り順</h4>
+<%= link_to "お気に入り順はこちら", recipes_path, class:"col-sm-3 btn btn-outline-warning mt-1 mx-1 btn-sm" %>
+<div class="col-sm-4"></div>
+</div>
 
-<h3>♡お気に入りランキング</h3>
+
+
 
 <%= render 'recipe_top', recipes: @recipe_rank %>
 

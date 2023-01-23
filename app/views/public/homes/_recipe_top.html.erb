@@ -1,11 +1,34 @@
 <!--TOPページ新着・ランキング使用-->
 
-<% recipes.each do |recipe| %>
+<% recipes.first(3).each do |recipe| %>
+  <div class="card mb-3 ml-sm-5" style="max-width: 540px;" >
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <div class="card-img">
+        <%= image_tag recipe.get_image,class:"img-thumbnail mx-auto d-block max-width:100%;"  %>
+      </div>
+    </div>
+      <div class="col-md-8">
+        <div class="card-body text-center">
+          <h4 class="card-title">
+            <strong><%= link_to recipe.name, recipe_path(recipe.id),class:"mt-1 text-secondary"  %></strong>
+          </h4>
+            <div class="card-text mt-3">
+              <small class="text-muted">
+              <%= recipe.introduction %>
+              </small>
+            </div>
+              <div class="card-text mt-1">
+                <small class="text-muted">
+                 ♡<%= recipe.favorites.count  %>
+                コメント：<%= recipe.comments.count %>件
+                <%= image_tag recipe.customer.get_image, size: '30x30',class:"rounded-circle "  %>
+                <%= link_to recipe.customer.name, customer_path(recipe.customer.id),class:"text-secondary "  %>
+                </small>
+              </div>
 
-  <%= image_tag recipe.get_image, size: '50x50' %>
-  <%= link_to recipe.name, recipe_path(recipe.id) %>
-  <%= image_tag recipe.customer.get_image, size: '30x30' %>
-  <%= link_to recipe.customer.name, customer_path(recipe.customer.id) %>
-  いいね数：<%= recipe.favorites.count %>
-
+        </div>
+      </div>
+  </div>
+</div>
 <% end %>

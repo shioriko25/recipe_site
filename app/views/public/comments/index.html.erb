@@ -1,22 +1,46 @@
-<h1>Public::Comments#index</h1>
-<p>Find me in app/views/public/comments/index.html.erb</p>
+
+<div class="row mt-5 h4 pb-2 mb-4 text-secondary border-bottom border-warning " >
+    <h5 class="col-sm-4">コメント一覧</h5>
+  </div>
 
 
-<h3>コメント一覧</h3>
+<div class="row  h4 pb-2 mb-4 mt-sm-3 justify-content-end" >
+    <%= link_to "　 マイページ　",  customer_path(current_customer), class:"col-sm-3 btn btn-warning mt-1 mx-1 btn-sm" %>
+</div>
 
 
 
- <p>コメント件数：<%= @comments.count %></p>
-
+<div class="text-secondary">
+コメント全 <%= @comments.count %> 件
+</div>
 
  <% @comments.each do |comment| %>
-    <p><%= image_tag comment.customer.get_image, size: '30x30' %></p>
-    <%= comment.customer.name %>
-    <%= comment.comment %>
-     <%= link_to comment.recipe.name, recipe_path(comment.recipe.id) %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %>
-     <% if comment.customer == current_customer %>
-      <%= link_to "削除",  recipe_comment_path(comment.recipe, comment), method: :delete %>
-      <% end %>
+<div class="card mb-3 ml-sm-5" style="max-width: 540px;" >
+  <div class="row no-gutters">
+    </div>
+      <div class="card">
+        <h5 class="card-title row ">
+         <%= image_tag comment.recipe.get_image, class:"col-5 col-sm-3 rounded"  %>
+         <strong class="align-self-center"><%= link_to comment.recipe.name, recipe_path(comment.recipe.id), class:"col text-secondary "  %></strong>
+        </h5>
+          <div class="card-text mt-1 m-3 text-secondary">
+            <%= comment.comment %>
+          </div>
+            <div class="card-text m-2 text-sm-right">
+              <small class="text-muted ">
+                <%= image_tag comment.customer.get_image, size: '30x30',class:"rounded-circle " %>
+                <%= link_to comment.customer.name, customer_path(comment.customer.id), class:"text-secondary  " %>
+                <%= comment.created_at.strftime('%Y/%m/%d') %>
+              </small>
+          </div>
+      </div>
+  </div>
+
+
+
+
  <% end %>
-  
+
+
+
+

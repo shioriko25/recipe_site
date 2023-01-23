@@ -4,7 +4,7 @@
       </div>
         <%= form_with model: @customer, url: customer_session_path do |f| %>
           <div class="mt-5 mb-3  row justify-content-center">
-            <%= f.label :"メールアドレス" ,class:"col-sm-4  form-label" %>
+            <%= f.label :"メールアドレス" ,class:"col-sm-4  form-label " %>
             <%= f.email_field :email, autofocus: true, autocomplete: "email",class:" col-sm-7 form-control " %>
           </div>
         

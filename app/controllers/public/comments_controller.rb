@@ -3,7 +3,7 @@ class Public::CommentsController < ApplicationController
 
   def index
     @comments = Comment.all
-    #@recipe = Recipe.find(params[:recipe_id])
+    #@recipes = Recipe.all
   end
 
   def create
