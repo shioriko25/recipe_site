@@ -3,7 +3,7 @@
 <div class="row mt-5 h4 pb-2 mb-4  border-bottom border-warning justify-content-end" >
    <% if @recipe.customer == current_customer %>
     <%= link_to "編集する", edit_recipe_path(@recipe), class:" btn btn-outline-warning" %>
-    <%= link_to "削除",  recipe_path(@recipe), method: :delete, class:"ml-2 btn btn-outline-danger" %>
+    <%= link_to "削除",  recipe_path(@recipe), method: :delete, class:"ml-2 btn btn-outline-dark" %>
    <% end %>
 </div>
 
@@ -13,61 +13,101 @@
 <%= image_tag @recipe.get_image,class:"img-thumbnail max-width:100%;"  %>
 </div>
 </div>
-<div class=" row mt-3 mt-sm-4 text-secondary ">
-<h2><%= @recipe.name %></h2>
-</div>
 
-<div class=" row mt-1">
-  <div class="col">
-  <%= image_tag @recipe.customer.get_image, size: '30x30', class:"rounded-circle " %>
-<%= link_to @recipe.customer.name, customer_path(@recipe.customer.id), class:"text-secondary" %>
-</div>
-<div class="col  ">
- <% if @recipe.favorited_by?(current_customer) %>
-    <p class="btn btn-outline-danger">
-      <%= link_to recipe_favorites_path(@recipe), method: :delete do %>
-        ♥<%= @recipe.favorites.count %> いいね
+
+
+<div class=" row mt-1 justify-content-end">
+<div class="col-8 col-sm-4" >
+<% if customer_signed_in? %>
+  <% if @recipe.favorited_by?(current_customer) %>
+    <p>
+      <%= link_to recipe_favorites_path(@recipe), class:"btn btn-outline-danger", method: :delete do %>
+        ♥ お気に入り（<%= @recipe.favorites.count %>）
       <% end %>
     </p>
     <% else %>
-    <p class="btn btn-outline-danger">
-      <%= link_to recipe_favorites_path(@recipe), method: :post do %>
-        ♡<%= @recipe.favorites.count %> いいね
+    <p>
+      <%= link_to recipe_favorites_path(@recipe), class:"btn btn-outline-danger", method: :post do %>
+        ♡ お気に入り（<%= @recipe.favorites.count %>）
       <% end %>
     </p>
   <% end %>
+ <% else %>
+  <%= link_to new_customer_registration_path, class:"btn btn-outline-danger" do %>
+        ♡ お気に入り（<%= @recipe.favorites.count %>）
+  <% end %>
+ <% end %>
   </div>
 </div>
 
+<div class=" row mt-1 justify-content-end">
+  <div class="col-8 col-sm-3">
+    <small class="text-muted">
+  <%= image_tag @recipe.customer.get_image, size: '30x30', class:"rounded-circle " %>
+<%= link_to @recipe.customer.name, customer_path(@recipe.customer.id), class:"text-secondary" %>
+    </small>
+</div>
+</div>
 
 
+<div class=" row mt-3 mt-sm-4 ml-sm-2 text-secondary ">
+<h2><%= @recipe.name %></h2>
+</div>
 
+<div class=" row mt-3 mt-sm-4 ml-sm-2 text-secondary ">
+<%= @recipe.introduction %>
+</div>
 
-
-
-
+<div class=" row mt-3 mt-sm-4 ml-sm-2 text-secondary ">
   <%= @recipe.size %>
   <%= @recipe.quantity %>
-  <%= @recipe.introduction %>
-  <%= @recipe.point %>
+</div>
+  
+<div class=" row mt-3 mt-sm-4 ml-sm-2 text-secondary ">  
   <%= @recipe.ingredient_name %>
+</div>
+  
+<div class=" row mt-3 mt-sm-4 ml-sm-2 text-secondary ">  
+  <%= @recipe.point %>
+</div>
+  
+ <div class=" row mt-3 mt-sm-4 ml-sm-2 text-secondary "> 
   <%= @recipe.process %>
+</div>
 
-
-
-
-
-<div>
-  <p>コメント件数：<%= @recipe.comments.count %></p>
+<div class="row text-secondary justify-content-end">
+  コメント全<%= @recipe.comments.count %>件
+</div>  
+  
   <% @recipe.comments.each do |comment| %>
-    <p><%= image_tag @recipe.customer.get_image, size: '30x30' %></p>
-    <%= comment.customer.name %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+  <div class="card mb-3 ml-sm-2 " style="max-width: 540px;" >
+  <div class="row no-gutters">
+    </div>
+      <div class="card">
+        <div class="row card-title m-2 justify-content-between">
+        <h6>
+          <%= image_tag @recipe.customer.get_image, size: '30x30',class:"rounded-circle " %>
+           <%= link_to comment.customer.name, customer_path(comment.customer.id), class:"text-secondary" %>
+         </h6>
+           <small class="text-muted">
+            <%= comment.created_at.strftime('%Y/%m/%d') %>
+           </small>
+         </div>
+   
+    
+    
+    <div class="card-text mt-1 m-3 text-secondary">
+    <%= comment.comment %>
+     </div>
+      </div>
+  </div>
+
+    
      <% if comment.customer == current_customer %>
       <%= link_to "削除",  recipe_comment_path(comment.recipe, comment), method: :delete %>
       <% end %>
-
-  <% end %>
+     <% end %>
+     
 </div>
 <div>
   <%= form_with model: [@recipe, @comment] do |f| %>
