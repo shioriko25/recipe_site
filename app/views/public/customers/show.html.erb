@@ -1,13 +1,31 @@
+<div><%= flash[:notice] %></div>
+<div class="row mt-5 h4 pb-2 mb-4 text-secondary border-bottom border-warning justify-content-between" >
+  <h4 class="col-sm-4">profile</h4>
+</div>
 
-<h3>ログインユーザー以外のページ</h3>
+<div class="row mt-3 mt-sm-4">
+  <div class="col-10 col-sm-5">
+  <%= image_tag @customer.get_image,class:"rounded-circle img-thumbnail mx-auto d-block max-width:100%; " %>
+  </div>
+  <div class="col">
+    <table class="table table-borderless text-secondary ">
+      <tbody>
+        <tr>
+          <td><%= @customer.name %></td>
+        </tr>
+        <tr>
+          <td><%= @customer.email %></td>
+        </tr>
+        <tr>
+          <td><%= @customer.introduction %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
+<div class="row mt-5 h4 pb-2 mb-4 text-secondary border-bottom border-warning " >
+    <h5 class="col-sm-4">投稿したレシピ一覧</h5>
+  </div>
 
-  <%= image_tag @customer.get_image, size: '50x50' %>
-  <%= @customer.name %>
-  <!--ニックネームもできれば入れたい-->
-  <%= @customer.introduction %>
-
-
-
-<h3>レシピ一覧</h3>
 <%= render 'recipe', customer_recipe: @customer.recipes %>

@@ -30,7 +30,7 @@
             </p>
     <% end %>
       <% else %>
-        <%= link_to new_customer_registration_path, class:"btn btn-outline-danger" do %>
+        <%= link_to new_customer_session_path, class:"btn btn-outline-danger" do %>
           ♡ お気に入り（<%= @recipe.favorites.count %>）
       <% end %>
     <% end %>
@@ -48,34 +48,34 @@
 
 
 <div class=" row m-4 mt-sm-4 ml-sm-2 text-secondary border-bottom">
-  <h4><%= @recipe.name %></h4>
+  <h4><%= safe_join(@recipe.name.split("\n"),tag(:br)) %></h4>
 </div>
 
-<div class=" row m-4 p-3 mt-sm-4 ml-sm-2 text-secondary  border border-white rounded ">
-  <%= @recipe.introduction %>
+<div class=" row m-4 p-3 mt-sm-4 ml-sm-2 text-secondary  border border-white rounded " >
+  <%= safe_join(@recipe.introduction.split("\n"),tag(:br)) %>
 </div>
 
-<div class=" row m-4 mt-sm-4 ml-sm-2 text-secondary border-bottom">
+<div class=" row m-4 mt-sm-4 ml-sm-2 text-secondary border-bottom " >
  <h6>
     材料 （<%= @recipe.size %>
     <%= @recipe.quantity %>）
   </h6>
 </div>
 
-<div class=" row m-4 mt-sm-4 ml-sm-2 text-secondary ">
-  <%= @recipe.ingredient_name %>
+<div class=" row m-4 mt-sm-4 ml-sm-2 text-secondary border border-white rounded" >
+  <%= safe_join(@recipe.ingredient_name.split("\n"),tag(:br)) %>
 </div>
 
-<div class=" row m-4 p-3 mt-sm-4  text-secondary  border border-warning rounded">
-  <%= @recipe.point %>
+<div class=" row m-4 p-3 mt-sm-4  text-secondary  border border-warning rounded" >
+  <%= safe_join(@recipe.point.split("\n"),tag(:br)) %>
 </div>
 
-<div class=" row m-4 mt-sm-4 ml-sm-2 text-secondary border-bottom">
+<div class=" row m-4 mt-sm-4 ml-sm-2 text-secondary border-bottom" >
   <h7 class="">作り方 </h7>
 </div>
 
-<div class=" row m-4 mt-sm-4 ml-sm-2 text-secondary ">
-  <%= @recipe.process %>
+<div class=" row m-4 mt-sm-4 ml-sm-2 text-secondary border border-white rounded" >
+   <%= safe_join(@recipe.process.split("\n"),tag(:br)) %>
 </div>
 
 <div class="row my-sm-5 pr-5 text-secondary justify-content-end">
@@ -97,7 +97,7 @@
             </small>
         </div>
           <div class="card-text mt-1 m-3 text-secondary">
-            <%= comment.comment %>
+            <%= safe_join(comment.comment.split("\n"),tag(:br)) %>
               <div class="card-text mt-1 text-secondary text-right">
                 <% if comment.customer == current_customer %>
                   <%= link_to "削除",  recipe_comment_path(comment.recipe, comment), method: :delete, class:"text-danger" %>

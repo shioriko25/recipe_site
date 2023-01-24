@@ -8,10 +8,8 @@
     <%= link_to "　 マイページ　",  customer_path(current_customer), class:"col-sm-3 btn btn-warning mt-1 mx-1 btn-sm" %>
 </div>
 
-
-
 <div class="text-secondary">
-コメント全 <%= @comments.count %> 件
+  コメント全 <%= @comments.count %> 件
 </div>
 
  <% @comments.each do |comment| %>
@@ -21,7 +19,9 @@
       <div class="card">
         <h5 class="card-title row ">
          <%= image_tag comment.recipe.get_image, class:"col-5 col-sm-3 rounded"  %>
-         <strong class="align-self-center"><%= link_to comment.recipe.name, recipe_path(comment.recipe.id), class:"col text-secondary "  %></strong>
+          <strong class="align-self-center">
+           <%= link_to comment.recipe.name, recipe_path(comment.recipe.id), class:"col text-secondary "  %>
+          </strong>
         </h5>
           <div class="card-text mt-1 m-3 text-secondary">
             <%= comment.comment %>

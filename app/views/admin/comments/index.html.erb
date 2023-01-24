@@ -1,12 +1,39 @@
 <div><%= flash[:notice] %></div>
+<div class="row mt-5 h4 pb-2 mb-4 text-secondary border-bottom border-warning " >
+  <h5 class="col-sm-4">会員コメント一覧</h5>
+</div>
 
-<h3>コメント一覧</h3>
+<div class="text-secondary">
+  コメント全 <%= @comments.count %> 件
+</div>
 
+ <% @comments.each do |comment| %>
+<div class="card mb-3 ml-sm-5" style="max-width: 540px;" >
+  <div class="row no-gutters">
+    </div>
+      <div class="card">
+        <h5 class="card-title row ">
+         <%= image_tag comment.recipe.get_image, class:"col-5 col-sm-3 rounded"  %>
+          <strong class="align-self-center">
+           <%= link_to comment.recipe.name, recipe_path(comment.recipe.id), class:"col text-secondary "  %>
+          </strong>
+        </h5>
+          <div class="card-text mt-1 m-3 text-secondary">
+             <%= safe_join(comment.comment.split("\n"),tag(:br)) %>
+          </div>
 
-<% @comments.each do |comment| %>
-<%= image_tag comment.customer.get_image, size: '30x30' %>
-<%= link_to comment.customer.name,  admin_comment_path(comment.id)  %>
-<%= comment.comment %>
-<%= comment.created_at.strftime('%Y/%m/%d') %>
-<% end %>
+              <div class="card-text mt-1 text-secondary ">
+                <%= link_to "コメント詳細へ",  admin_comment_path(comment.recipe.id), class:"text-white btn btn-danger" %>
+                <%#= link_to "削除",  admin_comment_path(@comment.id), method: :delete %>
+              </div>
+                <div class="card-text m-2 text-sm-right">
+                  <small class="text-muted ">
+                    <%= image_tag comment.customer.get_image, size: '30x30',class:"rounded-circle " %>
+                    <%= link_to comment.customer.name, customer_path(comment.customer.id), class:"text-secondary  " %>
+                    <%= comment.created_at.strftime('%Y/%m/%d') %>
+                  </small>
+                </div>
+      </div>
+  </div>
+ <% end %>
 

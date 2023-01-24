@@ -1,5 +1,5 @@
 class Public::CommentsController < ApplicationController
-
+before_action :authenticate_customer!
 
   def index
     @comments = Comment.all

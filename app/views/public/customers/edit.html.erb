@@ -1,40 +1,40 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
-
-
-<h3>マイページ編集</h3>
-
+<div><%= flash[:notice] %></div>
+<div class="row mt-5 h4 pb-2 mb-4 text-secondary border-bottom border-warning " >
+    <h5 class="col-sm-4">プロフィールを編集</h5>
+  </div>
 
  <%= form_with model: @customer, url: customer_path do |f| %>
  
- 
- <div class="form-group">
-  <%= f.label :name, "お名前" ,class: ""  %>
-  <%= f.text_field :name, class: "form-control last_name"%>
- </div>
- <div class="form-group">
-  <%= f.label :name_kana, "ふりがな" ,class: ""  %>
-  <%= f.text_field :name_kana, class: ""%>
- </div>
- <div class="form-group"></div> <!--できればニックネームも-->
- <div class="form-group">
-  <%= f.label :email, "メールアドレス" ,class: ""  %>
-  <%= f.text_field :email, class: ""%>
- </div>
- <div class="form-group">
-  <%= f.label :introduction, "自己紹介" ,class: ""  %>
-  <%= f.text_area :introduction, class: ""%>
- </div>
- <div class="form-group">
-  <%= image_tag @customer.get_image, size: '50x50' %>
-  <%= f.label :image, "プロフィール画像" ,class: ""  %>
+ <div class="form-group mt-5">
+  <%= image_tag @customer.get_image, size: '100x100',class:"rounded-circle" %><span class="text-secondary"><small>　　現在のプロフィール画像</small></span></br>
+  <%= f.label :image, "プロフィール画像" ,class: "text-secondary border-bottom mt-4"  %></br>
   <%= f.file_field :image, accept:"image/*" %> <!--accept: "image/*"は画像ファイルのみ投稿可能-->
  </div>
  
- <div class="">
-  <%= f.submit "保存", class: "" %>
-  <%= link_to "退会する" , customers_unsubscribe_path(@customer), class: "", style: "" %>
+ <div class="form-group mt-5">
+  <%= f.label :name, "お名前" ,class: "text-secondary border-bottom "  %>
+  <%= f.text_field :name, class: "form-control mt-2"%>
+ </div>
+ <div class="form-group mt-5">
+  <%= f.label :name_kana, "ふりがな" ,class: "text-secondary border-bottom "  %>
+  <%= f.text_field :name_kana, class: "form-control mt-2" %>
  </div>
  
+ <div class="form-group mt-5">
+  <%= f.label :email, "メールアドレス" ,class: "text-secondary border-bottom "  %>
+  <%= f.text_field :email, class: "form-control mt-2" %>
+ </div>
+ <div class="form-group mt-5">
+  <%= f.label :introduction, "自己紹介" ,class: "text-secondary border-bottom "  %>
+  <%= f.text_area :introduction, class: "form-control mt-2" %>
+ </div>
+ 
+ 
+ <div class="actions d-grid col-9 mt-5 mx-auto " >
+  <%= f.submit "プロフィールを保存", class: "btn btn-warning btn-block text-white" %>
+ </div>
+ <div class="actions d-grid col-9 mt-5 mx-auto " >
+ <%= link_to "退会する" , customers_unsubscribe_path(@customer), class: "btn btn-outline-danger btn-block" %>
+ </div>
  <% end %>
  

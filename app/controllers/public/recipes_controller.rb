@@ -1,6 +1,6 @@
 class Public::RecipesController < ApplicationController
- #before_action :authenticate_customer only: [:index,:show, :create]
- #before_action :ensure_correct_customer,only: [:update, :destroy]
+ before_action :authenticate_customer!,only: [:new, :edit, :create, :update, :destroy]
+ before_action :is_matching_login_customer,only: [:edit,:create, :update, :destroy]
 
   def index
     @recipes = Recipe.all
@@ -25,7 +25,7 @@ class Public::RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @comment = Comment.new
     @recipe_tags = @recipe.tags #そのクリックした投稿に紐付けられているタグの取得
-    #@customer = Customer.find(params[:id])
+   # @commits = @task.commits
   end
 
   def edit
@@ -69,7 +69,7 @@ class Public::RecipesController < ApplicationController
     #redirect_back(fallback_location: root_path)
   end
 
-  
+
 
   def search
     @tag_list = Tag.all  #投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
@@ -91,5 +91,13 @@ class Public::RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:customer_id, :name, :size, :quantity, :introduction, :image, :ingredient_name, :process, :point)
   end
+
+  def is_matching_login_customer
+    customer_id = params[:recipe].nil? ? Recipe.find(params[:id] ).customer_id: recipe_params[:customer_id].to_i
+    unless customer_id == current_customer.id
+      redirect_to new_customer_session_path
+    end
+  end
+
 end
 

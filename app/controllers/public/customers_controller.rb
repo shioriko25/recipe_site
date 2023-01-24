@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   #before_action :authenticate_customer!
-  #before_action :ensure_correct_customer,except: [:unsubscribe, :withdrawal]
+  #before_action :is_matching_login_customer,except: [:unsubscribe, :withdrawal]
 
   def show
     @customer = Customer.find(params[:id])
@@ -42,6 +42,13 @@ class Public::CustomersController < ApplicationController
 
   def customer_params
    params.require(:customer).permit(:name, :name_kana, :email, :password, :image, :introduction )
+  end
+  
+  def is_matching_login_customer
+    customer_id = params[:id].to_i
+    unless customer_id == current_customer.id
+      redirect_to new_customer_session_path
+    end
   end
 
 end

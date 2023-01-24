@@ -1,17 +1,38 @@
+<div><%= flash[:notice] %></div>
+
+<div class="row mt-5 h4 pb-2 mb-4 text-secondary border-bottom border-warning justify-content-between" >
+  <h4 class="col-sm-4">会員情報一覧</h4>
+</div>
 
 
 
-<h3>会員一覧</h3>
 
-<% @customers.each do |customer| %>
-  <%= customer.id %>
-  <%= link_to customer.name, admin_customer_path(customer.id)  %>
-  <%= customer.email %>
-  <% if customer.is_deleted == false %>
-    有効
-  <% else %>
-    退会
-  <% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th scope="col">名前</th>
+      <th scope="col">メールアドレス</th>
+      <th scope="col">ステータス</th>
+    </tr>
+  </thead>
+    <% @customers.each do |customer| %>
+      <tbody>
+        <tr>
+          <td scope="row"><%= customer.id %></td>
+          <td><%= link_to customer.name, admin_customer_path(customer.id)  %></td>
+          <td><%= customer.email %></td>
+          <td>
+            <% if customer.is_deleted == false %>
+              有効
+            <% else %>
+              退会
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+      <% end %>
+      </table>
+    
 
 
-<% end %>

@@ -1,20 +1,48 @@
-
 <div><%= flash[:notice] %></div>
 
-<h3><%= @customer.name %>さんの会員詳細</h3>
+<div class="row mt-5 h4 pb-2 mb-4 text-secondary border-bottom border-warning justify-content-between" >
+  <h4 class="col"><%= @customer.name %>さんの会員詳細</h4>
+</div>
 
-<%= image_tag @customer.get_image, size: '50x50' %>
-<%= @customer.id %>
-<%= @customer.name %>
-<%= @customer.name_kana %>
-<%= @customer.email %>
-<%= @customer.introduction %>
-<% if @customer.is_deleted == false %>
-  有効
-<% else %>
-  退会
-<% end %>
+<table class="table">
+  <tbody>
+    <tr>
+      <th>No.</th>
+      <td scope="row"><%= @customer.id %></td>
+    </tr>
+    <tr>
+      <th>プロフィール画像</th>
+      <td><%= image_tag @customer.get_image, size: '50x50' %></td>
+    </tr>
+    <tr>
+      <th>名前</th>
+      <td><%= @customer.name %></td>
+    </tr>
+    <tr>
+      <th>ふりがな</th>
+      <td><%= @customer.name_kana %></td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= @customer.email %></td>
+    </tr>
+    <tr>
+      <th>自己紹介</th>
+      <td><%= @customer.introduction %></td>
+    </tr>
+    <tr>
+      <th>ステータス</th>
+      <td>
+        <% if @customer.is_deleted == false %>
+          有効
+        <% else %>
+          退会
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-<%= link_to "編集する", edit_admin_customer_path(@customer) %>
-<%#= link_to "投稿レシピを見る", _path(@customer) %>
-
+<div class="row  h4 pb-2 mb-4 mt-sm-3 justify-content-center" >
+  <%= link_to "編集する", edit_admin_customer_path(@customer), class:"col-sm-4 btn btn-outline-secondary mt-1 mx-1 btn-sm　" %>
+</div>
