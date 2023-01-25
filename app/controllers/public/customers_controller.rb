@@ -4,7 +4,6 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-
     if @customer.id == current_customer.id
       render "mypage"
     else
@@ -19,10 +18,10 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-       flash[:success] = "保存できました"
+       flash[:notice] = "変更保存できました"
        redirect_to customer_path(@customer)
     else
-      render 'edit'
+      render :edit
     end
   end
 
@@ -43,7 +42,7 @@ class Public::CustomersController < ApplicationController
   def customer_params
    params.require(:customer).permit(:name, :name_kana, :email, :password, :image, :introduction )
   end
-  
+
   def is_matching_login_customer
     customer_id = params[:id].to_i
     unless customer_id == current_customer.id

@@ -40,8 +40,8 @@ class Public::RecipesController < ApplicationController
     tag_list = params[:recipe][:tag_name].delete("　").delete(" ").split(',')
     if @recipe.save
        @recipe.save_tag(tag_list)
+       flash[:notice] = "レシピを投稿しました"
        redirect_to recipe_path(@recipe.id)
-      flash[:notice] = "レシピを投稿しました"
     else
       render :new
     end
@@ -53,7 +53,7 @@ class Public::RecipesController < ApplicationController
     tag_list = params[:recipe][:tag_name].delete("　").delete(" ").split(',')
     if @recipe.update(recipe_params)
        @recipe.save_tag(tag_list)
-      flash[:success] = "保存できました"
+       flash[:notice] = "レシピの変更を保存できました"
        redirect_to recipe_path(@recipe.id)
     else
       render :edit
