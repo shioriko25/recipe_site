@@ -8,10 +8,12 @@ class Customer < ApplicationRecord
     has_many :comments, dependent: :destroy
     has_many :recipes, dependent: :destroy
     has_many :favorited_recipes, through: :favorites, source: :recipe#いいねランキング
-    
     has_one_attached :image
-    
-      
+
+    validates :name, presence: true
+    validates :name_kana, presence: true
+    validates :email, presence: true
+
   def get_image #画像が存在しない場合に表示する画像をActiveStorageに格納する
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -21,13 +23,9 @@ class Customer < ApplicationRecord
   end
 
 
-def self.looks(searches, words)
-  if searches == "perfect_match"
-    @customer = Customer.where("name LIKE ?", "#{words}")
-  else
+def self.looks(words)
     @customer = Customer.where("name LIKE ?", "%#{words}%")
-  end
 end
 
-    
+
 end

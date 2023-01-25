@@ -32,12 +32,8 @@ def save_tag(sent_tags) #createアクションで記述したsave_tagインス�
     end
 end
 
-def self.looks(searches, words)
-  if searches == "perfect_match"
-    @recipe = Recipe.where("name LIKE ?", "#{words}")
-  else
+def self.looks(words)
     @recipe = Recipe.where("name LIKE ?", "%#{words}%")
-  end
 end
 
 

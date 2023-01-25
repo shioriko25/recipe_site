@@ -80,9 +80,8 @@ class Public::RecipesController < ApplicationController
 
 
   def finder
-    @range = params[:range]
-    @recipes = Recipe.looks(params[:search],params[:word])
-    @customers = Customer.looks(params[:search], params[:word])
+    @recipes = Recipe.looks(params[:word])
+    @customers = Customer.looks(params[:word])
   end
 
 
