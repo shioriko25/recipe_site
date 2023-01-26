@@ -14,7 +14,9 @@
           <td><%= @customer.name %></td>
         </tr>
         <tr>
-          <td><%= safe_join(@customer.introduction.split("\n"),tag(:br)) %></td>
+          <% if @customer.introduction != nil %>
+            <td><%= safe_join(customer.introduction.split("\n"),tag(:br)) %></td>
+          <% end %>
         </tr>
       </tbody>
     </table>
@@ -26,3 +28,5 @@
   </div>
 
 <%= render 'recipe', customer_recipe: @customer.recipes %>
+
+
