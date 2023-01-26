@@ -30,22 +30,15 @@
       <%= f.text_field :size, rows: '3', placeholder: "例）４cm", class: "form-control mt-2" %>
     </div>
 
-    <select class="form-control form-control-sm mt-5" >
-      <%#= f.label :quantity, "数量" ,class: "text-secondary border-bottom"  %>
+   <%= f.label :quantity, "数量" ,class: "text-secondary border-bottom"  %>
+    <select class="form-control form-control-sm mt-5" name="recipe[quantity]">
        <span class="text-white bg-secondary"><small>必須</small></span></br>
-      <%#= f.select :quantity, class: ""%>
-       <option selected>小さめの選択メニューを開く</option>
-       <option value="1">その1</option>
-       <option value="2">その2</option>
-       <option value="3">その3</option>
+       <option selected>単位を選ぶ</option>
+       <option value="個分">個分</option>
+       <option value="台分">台分</option>
+       <option value="枚分">枚分</option>
+       <option value="人前">人前</option>
     </select>
-
-<select class="form-control form-control-sm" aria-label="小さめの選択メニューの例">
-  <option selected>小さめの選択メニューを開く</option>
-  <option value="1">その1</option>
-  <option value="2">その2</option>
-  <option value="3">その3</option>
-</select>
 
 
     <div class="form-group mt-5">
