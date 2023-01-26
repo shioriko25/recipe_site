@@ -14,7 +14,8 @@ before_action :authenticate_customer!
        flash[:notice] = "コメントを送信しました"
        redirect_to recipe_path(recipe)
     else
-      render :show
+      flash[:notice] = "コメントを送信失敗しました"
+       redirect_to recipe_path(recipe)
     end
   end
 

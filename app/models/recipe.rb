@@ -6,8 +6,13 @@ class Recipe < ApplicationRecord
   has_many :recipe_tags, dependent: :destroy
   has_one_attached :image
   has_many :tags, through: :recipe_tags, dependent: :destroy  #throughオプションは「〜を経由する」
-   has_many :favorited_customers, through: :favorites, source: :customer#いいねランキング
-
+  has_many :favorited_customers, through: :favorites, source: :customer#いいねランキング
+   
+  validates :name, presence: true
+  validates :size, presence: true
+  validates :quantity, presence: true
+  validates :ingredient_name, presence: true
+  validates :process, presence: true
 
 def get_image #画像が存在しない場合に表示する画像をActiveStorageに格納する
     unless image.attached?

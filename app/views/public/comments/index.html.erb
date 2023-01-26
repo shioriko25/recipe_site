@@ -1,4 +1,3 @@
-
 <div class="row mt-5 h4 pb-2 mb-4 text-secondary border-bottom border-warning " >
     <h5 class="col-sm-4">コメント一覧</h5>
   </div>
@@ -24,19 +23,21 @@
           </strong>
         </h5>
           <div class="card-text mt-1 m-3 text-secondary">
-            <%= comment.comment %>
+            <%= safe_join(comment.comment.split("\n"),tag(:br)) %>
           </div>
             <div class="card-text m-2 text-sm-right">
+              <div class="card-text m-1 text-secondary text-right">
+              <% if comment.customer == current_customer %>
+                <%= link_to "削除",  recipe_comment_path(comment.recipe, comment), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"text-danger" %>
+              <% end %>
+              </div>
               <small class="text-muted ">
                 <%= image_tag comment.customer.get_image, size: '30x30',class:"rounded-circle " %>
                 <%= link_to comment.customer.name, customer_path(comment.customer.id), class:"text-secondary  " %>
                 <%= comment.created_at.strftime('%Y/%m/%d') %>
               </small>
-          </div>
+            </div>
+
       </div>
   </div>
  <% end %>
-
-
-
-

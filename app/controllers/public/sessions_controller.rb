@@ -2,6 +2,15 @@
 
 class Public::SessionsController < Devise::SessionsController
   before_action :customer_state, only: :create
+  
+  
+  
+  def guest_sign_in
+    customer = Customer.guest
+    sign_in customer
+    redirect_to root_path, notice: 'guestuserでログインしました。'
+  end
+
 
   # GET /resource/sign_in
   # def new
@@ -25,7 +34,9 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
-  private
+ private
+
+
 
   # 退会しているかを判断するメソッド
   def customer_state
@@ -37,7 +48,6 @@ class Public::SessionsController < Devise::SessionsController
     end
   end
 end
-
 
 #↓この記述の仕方もある
 

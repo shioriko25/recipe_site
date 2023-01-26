@@ -1,6 +1,7 @@
 
 <h3>レシピ編集</h3>
 
+<%= render 'error', list: @recipe %>
 
 <%= form_with model: @recipe, url:recipe_path, local: true do |f| %>
   <%= f.hidden_field :customer_id, :value => @customer.id  %>
@@ -38,7 +39,7 @@
        <option value="2">その2</option>
        <option value="3">その3</option>
     </select>
- 
+
 <select class="form-control form-control-sm" aria-label="小さめの選択メニューの例">
   <option selected>小さめの選択メニューを開く</option>
   <option value="1">その1</option>

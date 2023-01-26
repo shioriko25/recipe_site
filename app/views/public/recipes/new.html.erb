@@ -4,6 +4,8 @@
    <h5 class="col-sm-4">レシピ投稿</h5>
   </div>
 
+  <%= render 'error', list: @recipe %>
+
 <%= form_with model: @recipe, url:recipes_path, local: true do |f| %>
   <%= f.hidden_field :customer_id, :value => @customer.id  %>
 

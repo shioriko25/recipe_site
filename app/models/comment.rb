@@ -6,6 +6,8 @@ class Comment < ApplicationRecord
 
    has_one_attached :image
 
+   validates :comment, presence: true
+
 
    def get_image #画像が存在しない場合に表示する画像をActiveStorageに格納する
     unless image.attached?

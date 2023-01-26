@@ -3,7 +3,7 @@
   <div class="row mt-5 h4 pb-2 mb-4  border-bottom border-warning justify-content-end" >
     <% if @recipe.customer == current_customer %>
       <%= link_to "編集する", edit_recipe_path(@recipe), class:" btn btn-outline-warning" %>
-      <%= link_to "削除",  recipe_path(@recipe), method: :delete, class:"ml-2 btn btn-outline-dark" %>
+      <%= link_to "削除",  recipe_path(@recipe), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"ml-2 btn btn-outline-dark" %>
     <% end %>
   </div>
 
@@ -82,7 +82,10 @@
   コメント全<%= @recipe.comments.count %>件
 </div>
 
+
+
 <% @recipe.comments.each do |comment| %>
+
   <div class="card mb-3 ml-sm-2 " style="max-width: 570px;" >
     <div class="row no-gutters">
     </div>
@@ -100,7 +103,7 @@
             <%= safe_join(comment.comment.split("\n"),tag(:br)) %>
               <div class="card-text mt-1 text-secondary text-right">
                 <% if comment.customer == current_customer %>
-                  <%= link_to "削除",  recipe_comment_path(comment.recipe, comment), method: :delete, class:"text-danger" %>
+                  <%= link_to "削除",  recipe_comment_path(comment.recipe, comment), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"text-danger" %>
                 <% end %>
               </div>
           </div>

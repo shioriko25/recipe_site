@@ -6,7 +6,8 @@
   <h4 class="col-sm-4">profile</h4>
 </div>
   <div class="row justify-content-end">
-    <% if @customer == current_customer %>
+    <%# if @customer == current_customer %>
+    <% if @customer.name != "guestuser" %>
       <%= link_to  "プロフィールを編集する", edit_customer_path(@customer), class:"col-sm-4 btn btn-outline-secondary mt-1 mx-1 btn-sm" %>
     <% end %>
   </div>
