@@ -10,6 +10,7 @@
       <%= f.label :image, "レシピの写真" ,class: "text-secondary border-bottom "  %>
       <span class="text-white bg-secondary"><small>必須</small></span></br>
      　<span class="text-secondary "><small>注意）レシピの写真は、正方形または縦長サイズを選択してください</small></span></br>
+     　<%= image_tag @recipe.get_image, size: '100x100' %>
       <%= f.file_field :image, accept:"image/*" %> <!--accept: "image/*"は画像ファイルのみ投稿可能-->
     </div>
 

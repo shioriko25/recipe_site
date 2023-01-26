@@ -92,7 +92,7 @@
       <div class="card">
         <div class="row card-title m-2 justify-content-between">
           <h6>
-            <%= image_tag @recipe.customer.get_image, size: '30x30',class:"rounded-circle " %>
+            <%= image_tag comment.customer.get_image, size: '30x30',class:"rounded-circle " %>
             <%= link_to comment.customer.name, customer_path(comment.customer.id), class:"text-secondary" %>
           </h6>
             <small class="text-muted">

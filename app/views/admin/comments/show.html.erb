@@ -1,9 +1,0 @@
-<h3>コメント詳細</h3>
-
-
-<%= image_tag @comment.customer.get_image, size: '30x30' %>
-<%= link_to @comment.customer.name,  admin_customer_path(@comment.customer.id)  %>
-<%= @comment.comment %>
-<%= @comment.created_at.strftime('%Y/%m/%d') %>
-<%= link_to @comment.recipe.name, recipe_path(@comment.recipe.id) %>
-<%= link_to "削除",  admin_comment_path(@comment.id), method: :delete %>

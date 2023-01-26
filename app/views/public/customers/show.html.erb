@@ -14,9 +14,7 @@
           <td><%= @customer.name %></td>
         </tr>
         <tr>
-          <% if @customer.introduction != nil %>
             <td><%= safe_join(customer.introduction.split("\n"),tag(:br)) %></td>
-          <% end %>
         </tr>
       </tbody>
     </table>
