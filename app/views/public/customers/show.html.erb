@@ -14,7 +14,7 @@
             <td><%= @customer.name %></td>
           </tr>
           <tr>
-            <td><%= safe_join(customer.introduction.split("\n"),tag(:br)) %></td>
+            <td><%= safe_join(@customer.introduction.split("\n"),tag(:br)) %></td>
           </tr>
         </tbody>
       </table>
