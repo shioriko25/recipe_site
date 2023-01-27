@@ -1,30 +1,28 @@
 <div><%= flash[:notice] %></div>
-<div class="row mt-5 h4 pb-2 mb-4 text-secondary border-bottom border-warning justify-content-between" >
-  <h4 class="col-sm-4">profile</h4>
-</div>
+  <div class="row mt-5 h4 pb-2 mb-4 text-secondary border-bottom border-warning justify-content-between" >
+    <h4 class="col-sm-4">profile</h4>
+  </div>
 
 <div class="row mt-3 mt-sm-4">
   <div class="col-10 col-sm-5">
-  <%= image_tag @customer.get_image,class:"rounded-circle img-thumbnail mx-auto d-block max-width:100%; " %>
+    <%= image_tag @customer.get_image,class:"rounded-circle img-thumbnail mx-auto d-block max-width:100%; " %>
   </div>
-  <div class="col">
-    <table class="table table-borderless text-secondary ">
-      <tbody>
-        <tr>
-          <td><%= @customer.name %></td>
-        </tr>
-        <tr>
+    <div class="col">
+      <table class="table table-borderless text-secondary ">
+        <tbody>
+          <tr>
+            <td><%= @customer.name %></td>
+          </tr>
+          <tr>
             <td><%= safe_join(customer.introduction.split("\n"),tag(:br)) %></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 </div>
 
 <div class="row mt-5 h4 pb-2 mb-4 text-secondary border-bottom border-warning " >
-    <h5 class="col-sm-4">投稿したレシピ一覧</h5>
-  </div>
+  <h5 class="col-sm-4">投稿したレシピ一覧</h5>
+</div>
 
 <%= render 'recipe', customer_recipe: @customer.recipes %>
-
-

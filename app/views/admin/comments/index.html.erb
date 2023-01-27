@@ -7,32 +7,31 @@
   コメント全 <%= @comments.count %> 件
 </div>
 
- <% @comments.each do |comment| %>
-<div class="card mb-3 ml-sm-5" style="max-width: 540px;" >
-  <div class="row no-gutters">
+<% @comments.each do |comment| %>
+  <div class="card mb-3 ml-sm-5" style="max-width: 540px;" >
+    <div class="row no-gutters">
     </div>
       <div class="card">
         <h5 class="card-title row ">
-         <%= image_tag comment.recipe.get_image, class:"col-5 col-sm-3 rounded"  %>
-          <strong class="align-self-center">
-           <%= link_to comment.recipe.name, recipe_path(comment.recipe.id), class:"col text-secondary "  %>
-          </strong>
+          <%= image_tag comment.recipe.get_image, class:"col-5 col-sm-3 rounded"  %>
+            <strong class="align-self-center">
+            <%= link_to comment.recipe.name, recipe_path(comment.recipe.id), class:"col text-secondary "  %>
+            </strong>
         </h5>
-          <div class="card-text mt-1 m-3 text-secondary">
-             <%= safe_join(comment.comment.split("\n"),tag(:br)) %>
+        <div class="card-text mt-1 m-3 text-secondary">
+           <%= safe_join(comment.comment.split("\n"),tag(:br)) %>
+        </div>
+        <div class="card-text mt-1 text-secondary ">
+          <%= link_to "削除", admin_comment_path(comment), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"text-danger" %>
+        </div>
+          <div class="card-text m-2 text-sm-right">
+            <small class="text-muted ">
+              <%= image_tag comment.customer.get_image, size: '30x30',class:"rounded-circle " %>
+              <%= link_to comment.customer.name, customer_path(comment.customer.id), class:"text-secondary  " %>
+              <%= comment.created_at.strftime('%Y/%m/%d') %>
+            </small>
           </div>
-
-              <div class="card-text mt-1 text-secondary ">
-                <%= link_to "削除", admin_comment_path(comment), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"text-danger" %>
-              </div>
-                <div class="card-text m-2 text-sm-right">
-                  <small class="text-muted ">
-                    <%= image_tag comment.customer.get_image, size: '30x30',class:"rounded-circle " %>
-                    <%= link_to comment.customer.name, customer_path(comment.customer.id), class:"text-secondary  " %>
-                    <%= comment.created_at.strftime('%Y/%m/%d') %>
-                  </small>
-                </div>
       </div>
   </div>
- <% end %>
+<% end %>
 

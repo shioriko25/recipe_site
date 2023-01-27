@@ -1,11 +1,10 @@
 <div class="row h4 pb-2 mb-4 text-secondary border-bottom border-warning" >
-<h4>お気に入りレシピ一覧</h4>
+  <h4>お気に入りレシピ一覧</h4>
 </div>
 
 <div class="row  h4 pb-2 mb-4 mt-sm-3 justify-content-end" >
-    <%= link_to "　 マイページ　",  customer_path(current_customer), class:"col-sm-3 btn btn-warning mt-1 mx-1 btn-sm" %>
+  <%= link_to "　 マイページ　",  customer_path(current_customer), class:"col-sm-3 btn btn-warning mt-1 mx-1 btn-sm" %>
 </div>
-
 
 <%= render 'public/customers/recipe', customer_recipe: @favorite_recipes %>
 

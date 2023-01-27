@@ -7,23 +7,22 @@
       <%= f.label :"メールアドレス",class:"col-sm-4  form-label" %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email",class:" col-sm-7 form-control " %>
     </div>
-  
+
     <div class="mb-3 row justify-content-center">
       <%= f.label :"パスワード" ,class:"col-sm-4  form-label" %>
       <%= f.password_field :password, autocomplete: "current-password",class:" col-sm-7 form-control " %>
     </div>
-  
+
     <% if devise_mapping.rememberable? %>
       <div class="row mb-3 ml-3 custom-control custom-checkbox">
         <%= f.check_box :remember_me,class:" col-sm-3 custom-control-input" %>
         <%= f.label :remember_me,class:"col-sm-7 custom-control-label" %>
       </div>
     <% end %>
-  
+
     <div class="actions d-grid col-9 mt-5 mx-auto">
       <%= f.submit "ログイン",class:"btn btn-warning btn-block"  %>
     </div>
   <% end %>
-  
-  <%#= render "admin/shared/links" %>
+
 

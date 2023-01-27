@@ -1,11 +1,12 @@
 
 <div><%= flash[:notice] %></div>
-  <div class="row mt-5 h4 pb-2 mb-4  border-bottom border-warning justify-content-end" >
-    <% if @recipe.customer == current_customer %>
-      <%= link_to "編集する", edit_recipe_path(@recipe), class:" btn btn-outline-warning" %>
-      <%= link_to "削除",  recipe_path(@recipe), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"ml-2 btn btn-outline-dark" %>
-    <% end %>
-  </div>
+
+<div class="row mt-5 h4 pb-2 mb-4  border-bottom border-warning justify-content-end" >
+  <% if @recipe.customer == current_customer %>
+    <%= link_to "編集する", edit_recipe_path(@recipe), class:" btn btn-outline-warning" %>
+    <%= link_to "削除",  recipe_path(@recipe), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"ml-2 btn btn-outline-dark" %>
+  <% end %>
+</div>
 
 <div class=" row mt-1">
   <div class="col-12 col-sm-8 rounded mx-auto d-block">
@@ -37,6 +38,7 @@
   </div>
 </div>
 
+<!--レシピ詳細-->
 <div class=" row mt-1 justify-content-end">
   <div class="col-8 col-sm-3">
     <small class="text-muted">
@@ -46,9 +48,8 @@
   </div>
 </div>
 
-
 <div class=" row m-4 mt-sm-4 ml-sm-2 text-secondary border-bottom">
-  <h4><%= safe_join(@recipe.name.split("\n"),tag(:br)) %></h4>
+  <h3><%= safe_join(@recipe.name.split("\n"),tag(:br)) %></h3>
 </div>
 
 <div class=" row m-4 p-3 mt-sm-4 ml-sm-2 text-secondary  border border-white rounded " >
@@ -56,10 +57,10 @@
 </div>
 
 <div class=" row m-4 mt-sm-4 ml-sm-2 text-secondary border-bottom " >
- <h6>
+  <h5>
     材料 （<%= @recipe.size %>
     <%= @recipe.quantity %>）
-  </h6>
+  </h5>
 </div>
 
 <div class=" row m-4 mt-sm-4 ml-sm-2 text-secondary border border-white rounded" >
@@ -67,25 +68,24 @@
 </div>
 
 <div class=" row m-4 p-3 mt-sm-4  text-secondary  border border-warning rounded" >
+  <h6 class="text-warning">point!</h6>
   <%= safe_join(@recipe.point.split("\n"),tag(:br)) %>
 </div>
 
 <div class=" row m-4 mt-sm-4 ml-sm-2 text-secondary border-bottom" >
-  <h7 class="">作り方 </h7>
+  <h5>作り方 </h5>
 </div>
 
 <div class=" row m-4 mt-sm-4 ml-sm-2 text-secondary border border-white rounded" >
-   <%= safe_join(@recipe.process.split("\n"),tag(:br)) %>
+  <%= safe_join(@recipe.process.split("\n"),tag(:br)) %>
 </div>
 
+<!--コメント欄-->
 <div class="row my-sm-5 pr-5 text-secondary justify-content-end">
   コメント全<%= @recipe.comments.count %>件
 </div>
 
-
-
 <% @recipe.comments.each do |comment| %>
-
   <div class="card mb-3 ml-sm-2 " style="max-width: 570px;" >
     <div class="row no-gutters">
     </div>
@@ -120,8 +120,7 @@
   </div>
 <% end %>
 
-
  <!--タグ一覧-->
 <%= render 'tag_list', tag_list: @recipe_tags  %>
 
-<%= link_to " レシピ一覧に戻る", recipes_path(current_customer) %>
+

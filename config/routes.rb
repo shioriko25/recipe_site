@@ -39,17 +39,14 @@ end
     resource :favorites, only: [:create, :destroy] #URLに/:idを含めない形にしています
     end
     resources :customers, only: [:show, :edit, :update]
-    # resources :sessions, only: [:new, :create, :destroy]
-    # resources :registrations, only: [:new, :create]
   end
 
 
   namespace :admin do
     get 'homes/top'
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :tags, only: [:index, :new, :create, :edit, :update, :destroy]
+    #resources :tags, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :comments, only: [:index, :show, :destroy]
-   # resources :sessions, only: [:new, :create, :destroy]
   end
 
 end

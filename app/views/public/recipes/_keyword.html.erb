@@ -1,8 +1,7 @@
 
 <!--検索フォーム-->
 
-      <%= form_with url: finder_path, method: :get, class: 'form-inline my-2 my-lg-0', local: :true do |f| %>
-            <%= f.text_field :word , class:"form-control mr-sm-2", 'area-label': "Search", type: "Search", placeholder:"キーワード" %>
-            <%= f.submit "検索", class:"btn btn-sm btn-outline-dark" %>
-      <% end %>
-     
+<%= form_with url: finder_path, method: :get, class: 'form-inline my-2 my-lg-0', local: :true do |f| %>
+  <%= f.text_field :word , class:"form-control mr-sm-2", 'area-label': "Search", type: "Search", placeholder:"キーワード" %>
+  <%= f.submit "検索", class:"btn btn-sm btn-outline-dark" %>
+<% end %>

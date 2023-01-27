@@ -31,6 +31,4 @@ class Admin::CustomersController < ApplicationController
     params.require(:customer).permit(:name, :name_kana,  :image, :introduction,  :email, :is_deleted)
   end
 
-  
-  
 end

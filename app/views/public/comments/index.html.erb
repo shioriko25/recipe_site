@@ -1,43 +1,42 @@
 <div class="row mt-5 h4 pb-2 mb-4 text-secondary border-bottom border-warning " >
-    <h5 class="col-sm-4">コメント一覧</h5>
-  </div>
+  <h5 class="col-sm-4">コメント一覧</h5>
+</div>
 
 
 <div class="row  h4 pb-2 mb-4 mt-sm-3 justify-content-end" >
-    <%= link_to "　 マイページ　",  customer_path(current_customer), class:"col-sm-3 btn btn-warning mt-1 mx-1 btn-sm" %>
+  <%= link_to "　 マイページ　",  customer_path(current_customer), class:"col-sm-3 btn btn-warning mt-1 mx-1 btn-sm" %>
 </div>
 
 <div class="text-secondary">
   コメント全 <%= @comments.count %> 件
 </div>
 
- <% @comments.each do |comment| %>
-<div class="card mb-3 ml-sm-5" style="max-width: 540px;" >
-  <div class="row no-gutters">
-    </div>
-      <div class="card">
-        <h5 class="card-title row ">
-         <%= image_tag comment.recipe.get_image, class:"col-5 col-sm-3 rounded"  %>
-          <strong class="align-self-center">
-           <%= link_to comment.recipe.name, recipe_path(comment.recipe.id), class:"col text-secondary "  %>
-          </strong>
-        </h5>
+<% @comments.each do |comment| %>
+  <div class="card mb-3 ml-sm-5" style="max-width: 540px;" >
+    <div class="row no-gutters">
+      </div>
+        <div class="card">
+          <h5 class="card-title row ">
+            <%= image_tag comment.recipe.get_image, class:"col-5 col-sm-3 rounded"  %>
+              <strong class="align-self-center">
+              <%= link_to comment.recipe.name, recipe_path(comment.recipe.id), class:"col text-secondary "  %>
+              </strong>
+          </h5>
           <div class="card-text mt-1 m-3 text-secondary">
             <%= safe_join(comment.comment.split("\n"),tag(:br)) %>
           </div>
             <div class="card-text m-2 text-sm-right">
               <div class="card-text m-1 text-secondary text-right">
-              <% if comment.customer == current_customer %>
-                <%= link_to "削除",  recipe_comment_path(comment.recipe, comment), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"text-danger" %>
-              <% end %>
+                <% if comment.customer == current_customer %>
+                  <%= link_to "削除",  recipe_comment_path(comment.recipe, comment), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"text-danger" %>
+                <% end %>
               </div>
-              <small class="text-muted ">
-                <%= image_tag comment.customer.get_image, size: '30x30',class:"rounded-circle " %>
-                <%= link_to comment.customer.name, customer_path(comment.customer.id), class:"text-secondary  " %>
-                <%= comment.created_at.strftime('%Y/%m/%d') %>
-              </small>
+                <small class="text-muted ">
+                  <%= image_tag comment.customer.get_image, size: '30x30',class:"rounded-circle " %>
+                  <%= link_to comment.customer.name, customer_path(comment.customer.id), class:"text-secondary  " %>
+                  <%= comment.created_at.strftime('%Y/%m/%d') %>
+                </small>
             </div>
-
-      </div>
+        </div>
   </div>
- <% end %>
+<% end %>

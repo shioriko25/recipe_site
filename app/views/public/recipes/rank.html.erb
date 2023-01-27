@@ -5,15 +5,12 @@
 </div>
 
 <div class="h4 pb-2 mb-4 text-secondary border-bottom border-warning">
-        <h2></h2>
+  <h2></h2>
 </div>
-
-
-
-<%= render 'public/customers/recipe', customer_recipe: @recipe_rank %>
-
-<%= link_to "いいねした投稿", recipe_favorites_path(@recipes) %>
-
 
 <!--タグリスト-->
 <%= render 'tag_list', tag_list: @tag_list %>
+<!--お気に入り順レシピ一覧-->
+<%= render 'public/customers/recipe', customer_recipe: @recipe_rank %>
+<%= link_to "お気に入りした投稿", recipe_favorites_path(@recipes), class:"btn btn-secondary mt-1 mx-1 btn-sm"  %>
+

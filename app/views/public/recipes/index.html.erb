@@ -4,15 +4,13 @@
   <%= link_to "　　　　お気に入り順　　　　", rank_path, class:"btn btn-outline-warning mt-1 mx-1 btn-sm" %>
 </div>
 
-
 <div class="h4 pb-2 mb-4 text-secondary border-bottom border-warning ">
   <h5></h5>
 </div>
 
 <!--タグリスト-->
 <%= render 'tag_list', tag_list: @tag_list %>
-</br>
-
+<!--新着レシピ一覧-->
 <%= render 'public/customers/recipe', customer_recipe: @recipes %>
-<%= link_to "いいねした投稿", recipe_favorites_path(@recipes) %>
+<%= link_to "お気に入りした投稿", recipe_favorites_path(@recipes), class:"btn btn-secondary mt-1 mx-1 btn-sm" %>
 

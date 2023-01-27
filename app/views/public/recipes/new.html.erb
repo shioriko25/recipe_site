@@ -1,25 +1,24 @@
 <div><%= flash[:notice] %></div>
 
-  <div class="row mt-5 h4 pb-2 mb-4 text-secondary border-bottom border-warning " >
-   <h5 class="col-sm-4">レシピ投稿</h5>
-  </div>
+<div class="row mt-5 h4 pb-2 mb-4 text-secondary border-bottom border-warning " >
+ <h5 class="col-sm-4">レシピ投稿</h5>
+</div>
 
-  <%= render 'error', list: @recipe %>
+<%= render 'error', list: @recipe %>
 
 <%= form_with model: @recipe, url:recipes_path, local: true do |f| %>
   <%= f.hidden_field :customer_id, :value => @customer.id  %>
-
     <div class="form-group">
       <%= f.label :image, "レシピの写真" ,class: "text-secondary border-bottom "  %>
-      <span class="text-white bg-secondary"><small>必須</small></span></br>
-     　<span class="text-secondary "><small>注意）レシピの写真は、正方形または縦長サイズを選択してください</small></span></br>
+        <span class="text-white bg-secondary"><small>必須</small></span></br>
+        <span class="text-secondary "><small>注意）レシピの写真は、正方形または縦長サイズを選択してください</small></span></br>
       <%= f.file_field :image, accept:"image/*" %> <!--accept: "image/*"は画像ファイルのみ投稿可能-->
     </div>
 
     <div class="form-group mt-5">
-     <%= f.label :name, "レシピタイトル" ,class: "text-secondary border-bottom " %>
-       <span class="text-white bg-secondary"><small>必須</small></span>
-     <%= f.text_field :name, placeholder:"例）クッキー", class: "form-control mt-2" %>
+      <%= f.label :name, "レシピタイトル" ,class: "text-secondary border-bottom " %>
+        <span class="text-white bg-secondary"><small>必須</small></span>
+      <%= f.text_field :name, placeholder:"例）クッキー", class: "form-control mt-2" %>
     </div>
 
     <div class="form-group mt-5">
@@ -27,21 +26,18 @@
       <%= f.text_area :introduction,rows: '3', placeholder: "例）おやつにも贈り物にもぴったりなお気に入りのレシピです♪", class: "form-control mt-2"%>
     </div>
 
-    <div class="form-group mt-5">
-      <%= f.label :size, "サイズ" ,class: "text-secondary border-bottom"  %>
-        <span class="text-white bg-secondary"><small>必須</small></span>
-      <%= f.text_field :size, rows: '3', placeholder: "例）４cm", class: "form-control mt-2" %>
+   <div class="row align-items-center mt-5">
+      <div class="form-group col-auto ">
+        <%= f.label :size, "分量" ,class: "text-secondary border-bottom"  %>
+          <span class="text-white bg-secondary"><small>必須</small></span>
+        <%= f.text_field :size, rows: '3', placeholder: "例）４cm", class: "form-control mt-2" %>
+      </div>
+      <div class="form-group col-auto p-0">
+        <%= f.label :quantity, "サイズ、個数を記入する" ,class: "text-secondary border-bottom"  %>
+        <%= f.text_field :quantity, rows: '3', placeholder: "例）○個分", class: "form-control mt-2" %>
+      </div>
     </div>
 
-    <%= f.label :quantity, "数量" ,class: "text-secondary border-bottom"  %>
-    <select class="form-control form-control-sm mt-5" name="recipe[quantity]">
-       <span class="text-white bg-secondary"><small>必須</small></span></br>
-       <option selected>単位を選ぶ</option>
-       <option value="個分">個分</option>
-       <option value="台分">台分</option>
-       <option value="枚分">枚分</option>
-       <option value="人前">人前</option>
-    </select>
 
     <div class="form-group mt-5">
       <%= f.label :point, "point!" ,class: "text-secondary border-bottom"  %>
@@ -68,8 +64,6 @@
 
     <div class="row m-5">
       <%= f.submit "レシピを投稿する", class: "btn btn-warning btn-block text-white" %>
-      </div>
+    </div>
+
 <% end %>
-
-
-

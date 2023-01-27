@@ -25,7 +25,6 @@ class Admin::CommentsController < ApplicationController
   #   end
   # end
 
-
   def destroy
     if Comment.find(params[:id]).destroy
       redirect_to admin_comments_path
@@ -34,8 +33,5 @@ class Admin::CommentsController < ApplicationController
       render :index
     end
   end
-
-
-
-
+  
 end

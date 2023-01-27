@@ -1,14 +1,14 @@
 
 <div class="h4 pb-2 mb-4 text-secondary border-bottom border-warning ">
-  <h2>会員登録</h2>
+  <h2>新規会員登録</h2>
 </div>
 
 
   <%= form_with model: @customer,  url: customer_registration_path do |f| %>
-  
-  <div class=" mt-5 mb-3  row justify-content-center">
-    <%= render "public/shared/error_messages", resource: resource %>
-  </div>
+
+    <div class=" mt-5 mb-3  row justify-content-center">
+      <%= render "public/shared/error_messages", resource: resource %>
+    </div>
 
     <div class=" mt-5 mb-3  row justify-content-center">
       <%= f.label :"お名前",class:"col-sm-4  form-label " %>
@@ -47,4 +47,4 @@
     <div class="actions d-grid col-9 mt-4 mx-auto">
      <%= render "public/shared/links" %>
     </div>
-</div>
+
