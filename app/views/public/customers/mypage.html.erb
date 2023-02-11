@@ -35,8 +35,8 @@
 </div>
 
 <div class="row  h4 pb-2 mb-4 mt-sm-3 justify-content-center" >
-  <%= link_to "　 コメント一覧　", recipe_comments_path(@customer.comments, customer_id: @customer.id), class:"col-sm-3 btn btn-warning mt-1 mx-1 btn-sm" %>
-  <%= link_to "　お気に入りレシピ　", recipe_favorites_path(@customer.recipes), class:"col-sm-3 btn btn-warning mt-1 mx-1 btn-sm" %>
+  <%= link_to "　 コメント一覧　", customer_comments_path(@customer.id), class:"col-sm-3 btn btn-warning mt-1 mx-1 btn-sm" %>
+  <%= link_to "　お気に入りレシピ　", customer_favorites_path(@customer.id), class:"col-sm-3 btn btn-warning mt-1 mx-1 btn-sm" %>
 </div>
 <div class="row mt-5 h4 pb-2 mb-4 text-secondary border-bottom border-warning " >
   <h5 class="col-sm-4">投稿したレシピ一覧</h5>

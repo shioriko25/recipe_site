@@ -2,7 +2,16 @@ class Public::CommentsController < ApplicationController
 before_action :authenticate_customer!
 
   def index
-    @comments = Comment.where(customer_id: params[:customer_id]).all
+    # コメントしてくれた方のcomment_idを取得
+    target_comment_ids_array = Comment.where(recipe_id: Recipe.where(customer_id: params[:customer_id]).pluck(:id)).pluck(:id)
+    # 自分のcomment_idを配列に格納
+    my_comment_ids_array = Comment.where(customer_id: params[:customer_id]).pluck(:id)
+    # 上記2つのいずれかにあてはまるcomment_idを取得
+    comment_ids = target_comment_ids_array + my_comment_ids_array
+    
+    
+    @comments = Comment.where(id: comment_ids).all
+    #@comments = Comment.all
     #@recipes = Recipe.all
   end
 

@@ -34,11 +34,13 @@ end
    get 'finder' => "recipes#finder"
    get 'rank' => "recipes#rank"
     resources :recipes, only: [:index, :new, :show, :edit, :create, :update, :destroy] do
-    resources :comments, only: [:index, :create, :destroy]
-    resources :favorites, only: [:index]
+    resources :comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy] #URLに/:idを含めない形にしています
     end
-    resources :customers, only: [:show, :edit, :update]
+    resources :customers, only: [:show, :edit, :update] do
+      resources :comments, only: [:index]
+      resources :favorites, only: [:index]
+    end
   end
 
 
