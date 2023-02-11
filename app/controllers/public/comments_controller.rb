@@ -2,7 +2,7 @@ class Public::CommentsController < ApplicationController
 before_action :authenticate_customer!
 
   def index
-    @comments = Comment.all
+    @comments = Comment.where(customer_id: params[:customer_id]).all
     #@recipes = Recipe.all
   end
 
