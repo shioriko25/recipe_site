@@ -60,21 +60,24 @@ class Public::RecipesController < ApplicationController
     end
   end
 
-
-
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
-    redirect_to recipes_path
-    #redirect_back(fallback_location: root_path)
+    #一つ前のページの情報先にリダイレクトする
+    if params[:referer].present?
+      redirect_to params[:referer]
+    else
+      redirect_to recipes_path
+    end
   end
 
-
-
   def search
-    @tag_list = Tag.all  #投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
-    @tag = Tag.find(params[:tag_id]) #クリックしたタグを取得
-    @recipes = @tag.recipes.all #クリックしたタグに紐付けられた投稿を全て表示
+    #投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
+    @tag_list = Tag.all  
+    #クリックしたタグを取得
+    @tag = Tag.find(params[:tag_id]) 
+    #クリックしたタグに紐付けられた投稿を全て表示
+    @recipes = @tag.recipes.all 
   end
 
 

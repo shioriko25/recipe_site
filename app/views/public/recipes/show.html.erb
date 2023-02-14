@@ -4,7 +4,8 @@
 <div class="row mt-5 h4 pb-2 mb-4  border-bottom border-warning justify-content-end" >
   <% if @recipe.customer == current_customer %>
     <%= link_to "編集する", edit_recipe_path(@recipe), class:" btn btn-outline-warning" %>
-    <%= link_to "削除",  recipe_path(@recipe), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"ml-2 btn btn-outline-dark" %>
+    <!--,referer: request.referer 一つ前のページを取得-->
+    <%= link_to "削除",  recipe_path(@recipe,referer: request.referer), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"ml-2 btn btn-outline-dark" %>
   <% end %>
 </div>
 
