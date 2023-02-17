@@ -5,6 +5,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    @recipes = @customer.recipes.page(params[:page]).per(3)
     if customer_signed_in? && @customer.id == current_customer.id
       render "mypage"
     else

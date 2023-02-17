@@ -3,14 +3,14 @@ class Public::RecipesController < ApplicationController
  before_action :is_matching_login_customer,only: [:edit,:create, :update, :destroy]
 
   def index
-    @recipes = Recipe.all
-    @recipes = Recipe.all.order(created_at: :desc)
+    @recipes = Recipe.page(params[:page]).per(3)
+    #降順
+    @recipe = Recipe.all.order(created_at: :desc)
     @tag_list = Tag.all
-    #@recipe = current_customer.recipes.new #ビューのform_withのmodelに使う
   end
 
   def rank
-     @recipes = Recipe.all
+     @recipes = Recipe.page(params[:page]).per(3)
      @recipe_rank = Recipe.includes(:favorited_customers).sort {|a,b| b.favorited_customers.size <=> a.favorited_customers.size}
     @tag_list = Tag.all
   end
@@ -73,11 +73,11 @@ class Public::RecipesController < ApplicationController
 
   def search
     #投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
-    @tag_list = Tag.all  
+    @tag_list = Tag.all
     #クリックしたタグを取得
-    @tag = Tag.find(params[:tag_id]) 
+    @tag = Tag.find(params[:tag_id])
     #クリックしたタグに紐付けられた投稿を全て表示
-    @recipes = @tag.recipes.all 
+    @recipes = @tag.recipes.all
   end
 
 

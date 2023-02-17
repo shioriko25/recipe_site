@@ -1,10 +1,10 @@
 class Admin::CustomersController < ApplicationController
    # 管理者でログインしているのみ閲覧可にするメソッド
   before_action :authenticate_admin!
-  
-  
+
+
   def index
-    @customers = Customer.all
+    @customers = Customer.page(params[:page]).per(10)
   end
 
   def show
@@ -24,7 +24,7 @@ class Admin::CustomersController < ApplicationController
       render 'edit'
     end
   end
-  
+
    private
 
   def customer_params

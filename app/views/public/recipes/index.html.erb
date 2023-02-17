@@ -11,6 +11,18 @@
 <!--タグリスト-->
 <%= render 'tag_list', tag_list: @tag_list %>
 <!--新着レシピ一覧-->
-<%= render 'public/customers/recipe', customer_recipe: @recipes %>
-<%= link_to "お気に入りした投稿", recipe_favorites_path(@recipes), class:"btn btn-secondary mt-1 mx-1 btn-sm" %>
+<%= render 'public/customers/recipe', customer_recipe: @recipe %>
 
+<div class="mt-4 d-flex justify-content-center">
+  <%= paginate @recipes %>
+</div>
+
+<nav aria-label="ページ送りの実例">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">前へ</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">次へ</a></li>
+  </ul>
+</nav>

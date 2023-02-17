@@ -44,3 +44,6 @@
 
 <%= render 'recipe', customer_recipe: @customer.recipes %>
 
+<div class="mt-4 d-flex justify-content-center">
+  <%= paginate @recipes %>
+</div>
