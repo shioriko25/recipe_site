@@ -20,14 +20,14 @@
             </div>
             <div class="card-text mt-1">
               <small class="text-muted">
-              ♥<%= recipe.favorites.count  %>
-              コメント：<%= recipe.comments.count %>件
-              <%= image_tag recipe.customer.get_image, size: '30x30',class:"rounded-circle "  %>
-              <%= link_to recipe.customer.name, customer_path(recipe.customer.id),class:"text-secondary "  %>
+                ♥<%= recipe.favorites.count  %>
+                コメント：<%= recipe.comments.count %>件
+                <%= image_tag recipe.customer.get_image, size: '30x30',class:"rounded-circle "  %>
+                <%= link_to recipe.customer.name, customer_path(recipe.customer.id),class:"text-secondary "  %>
               </small>
             </div>
+          </div>
         </div>
-      </div>
     </div>
-</div>
+  </div>
 <% end %>

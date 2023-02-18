@@ -22,18 +22,18 @@
         <p>
           <%= link_to recipe_favorites_path(@recipe), class:"btn btn-outline-danger", method: :delete do %>
             ♥ お気に入り（<%= @recipe.favorites.count %>）
-      <% end %>
+          <% end %>
         </p>
           <% else %>
             <p>
               <%= link_to recipe_favorites_path(@recipe), class:"btn btn-outline-danger", method: :post do %>
                 ♡ お気に入り（<%= @recipe.favorites.count %>）
-          <% end %>
+              <% end %>
             </p>
-    <% end %>
-      <% else %>
-        <%= link_to new_customer_session_path, class:"btn btn-outline-danger" do %>
-          ♡ お気に入り（<%= @recipe.favorites.count %>）
+      <% end %>
+    <% else %>
+      <%= link_to new_customer_session_path, class:"btn btn-outline-danger" do %>
+        ♡ お気に入り（<%= @recipe.favorites.count %>）
       <% end %>
     <% end %>
   </div>
@@ -100,14 +100,14 @@
               <%= comment.created_at.strftime('%Y/%m/%d') %>
             </small>
         </div>
-          <div class="card-text mt-1 m-3 text-secondary">
-            <%= safe_join(comment.comment.split("\n"),tag(:br)) %>
-              <div class="card-text mt-1 text-secondary text-right">
-                <% if comment.customer == current_customer %>
-                  <%= link_to "削除",  recipe_comment_path(comment.recipe, comment), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"text-danger" %>
-                <% end %>
-              </div>
-          </div>
+        <div class="card-text mt-1 m-3 text-secondary">
+          <%= safe_join(comment.comment.split("\n"),tag(:br)) %>
+            <div class="card-text mt-1 text-secondary text-right">
+              <% if comment.customer == current_customer %>
+                <%= link_to "削除",  recipe_comment_path(comment.recipe, comment), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"text-danger" %>
+              <% end %>
+            </div>
+        </div>
       </div>
   </div>
 <% end %>

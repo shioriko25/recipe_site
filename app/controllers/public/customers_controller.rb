@@ -20,8 +20,8 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-       flash[:notice] = "変更保存できました"
-       redirect_to customer_path(@customer)
+      flash[:notice] = "変更保存できました"
+      redirect_to customer_path(@customer)
     else
       render :edit
     end
@@ -43,7 +43,7 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-   params.require(:customer).permit(:name, :name_kana, :email, :password, :image, :introduction )
+    params.require(:customer).permit(:name, :name_kana, :email, :password, :image, :introduction )
   end
 
   def is_matching_login_customer

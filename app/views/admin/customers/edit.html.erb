@@ -7,13 +7,13 @@
   <%= form_with model: @customer, url: admin_customer_path, label: true do |f| %>
 
     No.<%= @customer.id %>
-
     <div class="form-group mt-5">
-      <%= image_tag @customer.get_image, size: '100x100',class:"rounded-circle" %><span class="text-secondary"><small>　　現在のプロフィール画像</small></span></br>
+      <%= image_tag @customer.get_image, size: '100x100',class:"rounded-circle" %>
+        <span class="text-secondary"><small>　　現在のプロフィール画像</small></span></br>
       <%= f.label :image, "プロフィール画像" ,class: "text-secondary border-bottom mt-4"  %></br>
-      <%= f.file_field :image, accept:"image/*" %> <!--accept: "image/*"は画像ファイルのみ投稿可能-->
+      <!--accept: "image/*"は画像ファイルのみ投稿可能-->
+      <%= f.file_field :image, accept:"image/*" %>
     </div>
-
     <div class="form-group mt-5">
       <%= f.label :name, "お名前" ,class: "text-secondary border-bottom "  %>
       <%= f.text_field :name, class: "form-control mt-2"%>
@@ -37,7 +37,6 @@
     <div class="actions d-grid col-9 mt-5 mx-auto">
       <%= f.submit "会員情報を保存", class: "btn btn-warning btn-block text-white" %>
     </div>
-
   <% end %>
 
 

@@ -32,7 +32,7 @@ before_action :authenticate_customer!
     redirect_to recipe_path(params[:recipe_id])
   end
 
-   private
+  private
 
   def comment_params
     params.require(:comment).permit(:comment, :image, :recipe_id, :customer_id)

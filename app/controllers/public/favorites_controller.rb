@@ -2,8 +2,10 @@ class Public::FavoritesController < ApplicationController
 before_action :authenticate_customer!
 
   def index
-    favorites = Favorite.where(customer_id: current_customer.id).pluck(:recipe_id)  # ログイン中のユーザーのお気に入りのpost_idカラムを取得
-    @favorite_recipes = Recipe.find(favorites)     # postsテーブルから、お気に入り登録済みのレコードを取得
+    # ログイン中のユーザーのお気に入りのpost_idカラムを取得
+    favorites = Favorite.where(customer_id: current_customer.id).pluck(:recipe_id) 
+    # postsテーブルから、お気に入り登録済みのレコードを取得
+    @favorite_recipes = Recipe.find(favorites) 
   end
 
   def create

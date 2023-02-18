@@ -9,8 +9,8 @@ class Public::RecipesController < ApplicationController
   end
 
   def rank
-     @recipe_rank = Recipe.includes(:favorited_customers).sort {|a,b| b.favorited_customers.size <=> a.favorited_customers.size}
-     @recipe_ranks = Kaminari.paginate_array(@recipe_rank).page(params[:page]).per(5)
+    @recipe_rank = Recipe.includes(:favorited_customers).sort {|a,b| b.favorited_customers.size <=> a.favorited_customers.size}
+    @recipe_ranks = Kaminari.paginate_array(@recipe_rank).page(params[:page]).per(5)
     @tag_list = Tag.all
   end
 
@@ -23,8 +23,8 @@ class Public::RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @comment = Comment.new
-    @recipe_tags = @recipe.tags #そのクリックした投稿に紐付けられているタグの取得
-   # @commits = @task.commits
+    #そのクリックした投稿に紐付けられているタグの取得
+    @recipe_tags = @recipe.tags
   end
 
   def edit
@@ -38,9 +38,9 @@ class Public::RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     tag_list = params[:recipe][:tag_name].delete("　").delete(" ").split(',')
     if @recipe.save
-       @recipe.save_tag(tag_list)
-       flash[:notice] = "レシピを投稿しました"
-       redirect_to recipe_path(@recipe.id)
+      @recipe.save_tag(tag_list)
+      flash[:notice] = "レシピを投稿しました"
+      redirect_to recipe_path(@recipe.id)
     else
       render :new
     end
@@ -50,9 +50,9 @@ class Public::RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     tag_list = params[:recipe][:tag_name].delete("　").delete(" ").split(',')
     if @recipe.update(recipe_params)
-       @recipe.save_tag(tag_list)
-       flash[:notice] = "レシピの変更を保存できました"
-       redirect_to recipe_path(@recipe.id)
+      @recipe.save_tag(tag_list)
+      flash[:notice] = "レシピの変更を保存できました"
+      redirect_to recipe_path(@recipe.id)
     else
       render :edit
     end
