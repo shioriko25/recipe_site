@@ -1,11 +1,11 @@
 class Public::CustomersController < ApplicationController
-  #before_action :authenticate_customer!
-  #before_action :is_matching_login_customer,except: [:unsubscribe, :withdrawal]
+  before_action :authenticate_customer!,only: [:edit, :update,  :unsubscribe, :withdrawal]
+  before_action :is_matching_login_customer, only: [:edit, :update, :unsubscribe, :withdrawal]
   before_action :ensure_guest_user, only: [:edit]
 
   def show
     @customer = Customer.find(params[:id])
-    @recipes = @customer.recipes.page(params[:page]).per(3)
+    @recipes = @customer.recipes.page(params[:page]).per(5)
     if customer_signed_in? && @customer.id == current_customer.id
       render "mypage"
     else
@@ -33,7 +33,8 @@ class Public::CustomersController < ApplicationController
 
   def withdrawal
     @customer = current_customer
-    @customer.update!(is_deleted: true) #!を付けることでtrueかエラーで返すようになる
+    #!を付けることでtrueかエラーで返すようになる
+    @customer.update!(is_deleted: true)
     sign_out current_customer
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
@@ -55,7 +56,7 @@ class Public::CustomersController < ApplicationController
   def ensure_guest_user
     @customer = Customer.find(params[:id])
     if @customer.name == "guestuser"
-      redirect_to customer_path(current_customer) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+      redirect_to customer_path(current_customer)
     end
   end
 

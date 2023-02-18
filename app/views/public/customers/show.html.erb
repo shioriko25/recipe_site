@@ -25,8 +25,8 @@
   <h5 class="col-sm-4">投稿したレシピ一覧</h5>
 </div>
 
-<%= render 'recipe', customer_recipe: @customer.recipes %>
+<%= render 'recipe', customer_recipe: @recipes %>
 
-<div class="mt-4 d-flex justify-content-center">
+<div class="mt-4 d-flex justify-content-center pagination-sm">
   <%= paginate @recipes %>
 </div>

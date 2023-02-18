@@ -11,9 +11,8 @@
 <!--タグリスト-->
 <%= render 'tag_list', tag_list: @tag_list %>
 <!--お気に入り順レシピ一覧-->
-<%= render 'public/customers/recipe', customer_recipe: @recipe_rank %>
+<%= render 'public/customers/recipe', customer_recipe: @recipe_ranks %>
 
-
-<div class="mt-4 d-flex justify-content-center">
-  <%= paginate @recipes %>
+<div class="mt-4 d-flex justify-content-center pagination-sm">
+  <%= paginate @recipe_ranks %>
 </div>

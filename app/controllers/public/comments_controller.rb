@@ -8,11 +8,7 @@ before_action :authenticate_customer!
     my_comment_ids_array = Comment.where(customer_id: params[:customer_id]).pluck(:id)
     # 上記2つのいずれかにあてはまるcomment_idを取得
     comment_ids = target_comment_ids_array + my_comment_ids_array
-    
-    
     @comments = Comment.where(id: comment_ids).all
-    #@comments = Comment.all
-    #@recipes = Recipe.all
   end
 
   def create
@@ -29,7 +25,9 @@ before_action :authenticate_customer!
   end
 
   def destroy
-    Comment.find(params[:id]).destroy
+    comment = Comment.find(params[:id])
+    redirect_to recipe_path(params[:recipe_id]) unless comment.customer_id == current_customer.id
+    comment.destroy
     flash[:notice] = "コメントを削除しました"
     redirect_to recipe_path(params[:recipe_id])
   end

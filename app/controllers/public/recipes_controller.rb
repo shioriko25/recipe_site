@@ -3,15 +3,14 @@ class Public::RecipesController < ApplicationController
  before_action :is_matching_login_customer,only: [:edit,:create, :update, :destroy]
 
   def index
-    @recipes = Recipe.page(params[:page]).per(3)
     #降順
-    @recipe = Recipe.all.order(created_at: :desc)
+    @recipe = Recipe.all.order(created_at: :desc).page(params[:page]).per(5)
     @tag_list = Tag.all
   end
 
   def rank
-     @recipes = Recipe.page(params[:page]).per(3)
      @recipe_rank = Recipe.includes(:favorited_customers).sort {|a,b| b.favorited_customers.size <=> a.favorited_customers.size}
+     @recipe_ranks = Kaminari.paginate_array(@recipe_rank).page(params[:page]).per(5)
     @tag_list = Tag.all
   end
 
@@ -49,7 +48,6 @@ class Public::RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-    @customer = current_customer
     tag_list = params[:recipe][:tag_name].delete("　").delete(" ").split(',')
     if @recipe.update(recipe_params)
        @recipe.save_tag(tag_list)
