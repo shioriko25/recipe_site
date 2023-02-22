@@ -3,9 +3,23 @@
   <h4>"<strong><%= "#{@range = params[:word]}" %> </strong>"の検索結果</h4>
 </div>
 
-<% @customers.each do |customer| %>
-  <%= image_tag customer.get_image, size: '50x50' %>
-  <%= link_to customer.name, customer_path(customer.id) %>
-<% end %>
+<table class="table">
+  <% @customers.each do |customer| %>
+    <tbody>
+      <tr>
+        <td>
+          <%= image_tag customer.get_image, size: '50x50' %>
+          <%= link_to customer.name, customer_path(customer.id) %>
+        </td>
+       </tr>
+    </tbody>
+  <% end %>
+</table>
 
 <%= render 'public/customers/recipe', customer_recipe: @recipes %>
+
+
+<div class="mt-4 d-flex justify-content-center pagination-sm">
+  <%= paginate @recipes %>
+</div>
+

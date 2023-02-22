@@ -75,13 +75,13 @@ class Public::RecipesController < ApplicationController
     #クリックしたタグを取得
     @tag = Tag.find(params[:tag_id])
     #クリックしたタグに紐付けられた投稿を全て表示
-    @recipes = @tag.recipes.all
+    @recipes = @tag.recipes.page(params[:page]).per(7)
   end
 
 
 
   def finder
-    @recipes = Recipe.looks(params[:word])
+    @recipes = Recipe.looks(params[:word]).page(params[:page]).per(3)
     @customers = Customer.looks(params[:word])
   end
 

@@ -8,3 +8,7 @@
 <%= render 'tag_list', tag_list: @tag_list %>
 
 <%= render 'public/customers/recipe', customer_recipe: @recipes %>
+
+<div class="mt-4 d-flex justify-content-center pagination-sm">
+  <%= paginate @recipes %>
+</div>
