@@ -53,6 +53,9 @@
   <h3><%= safe_join(@recipe.name.split("\n"),tag(:br)) %></h3>
 </div>
 
+ <!--タグ一覧-->
+<%= render 'tag_list', tag_list: @recipe_tags  %>
+
 <div class=" row m-4 p-3 mt-sm-4 ml-sm-2 text-secondary  border border-white rounded " >
   <%= safe_join(@recipe.introduction.split("\n"),tag(:br)) %>
 </div>
@@ -121,7 +124,5 @@
   </div>
 <% end %>
 
- <!--タグ一覧-->
-<%= render 'tag_list', tag_list: @recipe_tags  %>
 
 
