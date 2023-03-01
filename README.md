@@ -20,7 +20,8 @@
 
 
 ## 設計書
-!(images/PF_er.png "ER図")
+![PF_er](https://user-images.githubusercontent.com/116153645/222072018-ed8dec19-859d-44df-b524-6b2149bbdd5f.png)
+
 
 
 
