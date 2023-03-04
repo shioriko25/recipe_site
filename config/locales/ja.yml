@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      customer: 会員情報
+    attributes:
+      customer:
+        name: 名前
+        name_kana: ふりがな
+        email: メールアドレス
+        password: パスワード
+  activemodel:   # Formオブジェクトを用いた場合
+     attributes:
+       order_object:
+         post_code: 郵便番号
+
